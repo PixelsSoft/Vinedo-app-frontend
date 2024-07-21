@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import "constants";
+input.amunt0-field {
+  background: #303030;
+  border-radius: 99px;
+  text-align: center;
+  height: auto;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+svg.star-svg {
+    display: inline;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.App {
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background: $background;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+#root{
+  background: $background;
+}
+
+ol,
+ul {
+  padding: 0;
+  padding-left: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.innerWidth {
+  @media (min-width: $xxl) {
+    max-width: 1280px;
+    margin: auto;
+  }
+
+  width: 100%;
+}
+
+.borderBottom {
+  border-bottom: 1px solid red !important;
+}
+
+.redBorder {
+  border: 1px solid red !important;
+}
+
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexStart {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flexEnd {
+  display: flex;
+  justify-items: end;
+}
+
+.flexBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// @media (max-width: 768px) {
+//   .plyr--fullscreen-enabled {
+//     width: 100vh !important; /* Use viewport height for landscape */
+//     height: 100vw !important; /* Use viewport width for landscape */
+//     transform-origin: top left;
+//     // transform: rotate(90deg) translateX(-100%) !important;
+//     transform: rotate(90deg) scale(1.75) !important;
+//   }
+// }
+
+body.background-hidden {
+  position: relative;
+}
+
+body.background-hidden::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: 9999;
+}
+body.no-screenshot {
+  position: relative;
+}
+
+body.no-screenshot::before {
+  content: " ";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  // background: rgba(0, 0, 0,0.1); /* Semi-transparent overlay */
+  z-index: 9999;
+  pointer-events: none;
+}
+

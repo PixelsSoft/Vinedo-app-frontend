@@ -1,0 +1,293 @@
+@import "../../styles/constants.scss";
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 15px 0;
+
+  header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 18px;
+
+    .searchBox {
+      position: relative;
+      width: 85%;
+      height: 52px;
+      background-color: #292734;
+      border-radius: 200px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 0.9rem;
+
+      svg {
+        font-size: 21px;
+        color: $primary;
+      }
+
+      input {
+        flex: 1;
+        width: 85%;
+        height: 40px;
+        border: none;
+        outline: none;
+        color: #fff;
+        background-color: transparent;
+
+        &::placeholder {
+          color: #a1a3a7;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 17px;
+        }
+      }
+    }
+
+    button {
+      flex: 1;
+      height: 27px;
+      padding: 9px 10px 9px 10px;
+      @include flexCenter;
+      border-radius: 100px;
+      outline: none;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 16px;
+      background: transparent;
+      color: #fff;
+      border: none;
+    }
+  }
+
+  .topCreators {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .card {
+      width: 86%;
+      min-height: 106px;
+      margin: 2.4rem auto;
+      margin-top: 7.8rem;
+      background-color: #111017;
+      border-radius: 15px;
+      display: flex;
+
+      .item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.94rem;
+        @include flexCenter;
+        margin-top: -2rem;
+        flex: 1;
+        padding-bottom: 5px;
+        cursor: pointer;
+
+        .profile {
+          width: 58px;
+          height: 58px;
+          border: 3px solid #6ab8ff;
+          border-radius: 50%;
+          position: relative;
+          margin-top: -0.5rem;
+
+          .rank {
+            width: 16px;
+            height: 16px;
+            background-color: #6ab8ff;
+            @include flexCenter;
+            color: #fff;
+            font-size: 8px;
+            font-weight: 400;
+            line-height: 12px;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            right: 0;
+            transform: translate(-50%, -50%);
+            bottom: -17px;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            vertical-align: middle;
+            border-radius: 50%;
+          }
+        }
+
+        &:nth-child(2) {
+          flex: 1.23;
+          background-color: #292734;
+          border-radius: 15px 15px 0px 0px;
+          padding-bottom: 0;
+          gap: 1.02rem;
+
+          .profile {
+            border: 3px solid $primary;
+            margin-top: -5.5rem;
+            width: 75px;
+            height: 75px;
+
+            .kingImg {
+              position: absolute;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              top: -15.2px;
+              z-index: 20;
+
+              img {
+                width: 100%;
+                transform: scale(1.14);
+              }
+            }
+
+            .rank {
+              background-color: $primary;
+              left: 50%;
+              right: 0;
+              transform: translate(-50%, -50%);
+              bottom: -21px;
+              width: 20px;
+              height: 20px;
+            }
+          }
+
+          .content {
+            margin-top: 7px;
+
+            .name{
+              font-size: 14px;
+            }
+            .points {
+              color: $primary;
+            }
+
+            .username{
+              margin-top: 6px;
+            }
+          }
+        }
+
+        &:nth-child(3) {
+          .profile {
+            border: 3px solid #9747ff;
+
+            .rank {
+              background-color: #9747ff;
+            }
+          }
+
+          .content {
+            .points {
+              color: #9747ff;
+            }
+          }
+        }
+
+        .content {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          align-items: center;
+          justify-content: center;
+          margin-top: -1px;
+
+          .name {
+            font-size: 12px;
+            font-weight: 400;
+            color: #fff;
+            line-height: 18px;
+            text-align: center;
+          }
+
+          .points {
+            color: #6ab8ff;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 18px;
+            text-align: center;
+          }
+
+          .username {
+            color: #7b7b7b;
+            font-size: 8px;
+            font-weight: 400;
+            line-height: 12px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  .divider{
+    width: 97%;
+    height: 0.5px;
+    background-color: #7B7B7B;
+    margin: .7rem auto;
+    opacity: .5;
+  }
+
+  .searchResults{
+    .item{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 19px;
+      cursor: pointer;
+
+      .left{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+
+        .img{
+          width: 42px;
+          height: 42px;
+          border-radius: 50%;
+
+          img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            vertical-align: middle;
+            border-radius: 50%;
+          }
+        }
+
+        .info{
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+
+          p{
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 17px;
+            margin-bottom: 0px;
+          }
+
+          span{
+            color: #A1A3A7;
+            font-size: 10px;
+            font-weight: 400;
+            line-height: 12px;
+          }
+        }
+      }
+    }
+  }
+}

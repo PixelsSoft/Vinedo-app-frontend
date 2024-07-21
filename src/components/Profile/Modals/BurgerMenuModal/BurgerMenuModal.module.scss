@@ -1,0 +1,66 @@
+@import "../../../../styles/constants.scss";
+
+.uploadWrapper {
+  .selectModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(123, 123, 123, 0.3);
+    z-index: 999;
+
+    .selectCard {
+      width: 100%;
+      height: 190px;
+      margin: auto;
+      background: $background;
+      display: flex;
+      flex-direction: column;
+      gap: .95rem;
+      border-radius: 12px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      padding: 2.1rem 1.5rem;
+      padding-top: 1.3rem;
+
+      .item {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        font-size: 20px;
+        margin-bottom: 9px;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+
+        p {
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 16px;
+          font-family: "Inter", sans-serif;
+        }
+      }
+
+      .term {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        font-weight: 500;
+        color: #797c7b;
+        line-height: 11px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 25px;
+      }
+    }
+  }
+}

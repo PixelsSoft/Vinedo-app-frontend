@@ -1,0 +1,17 @@
+.wrapper{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+
+    h1{
+        color: red;
+    }
+
+    p:nth-child(3){
+        color: red;
+    }
+}

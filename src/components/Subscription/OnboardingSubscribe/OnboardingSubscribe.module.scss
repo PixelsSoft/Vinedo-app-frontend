@@ -1,0 +1,206 @@
+@import "../../../styles/constants.scss";
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  //   justify-content: flex-end;
+  transition: all 0.3s;
+
+  .backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .hiddenImage {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    visibility: hidden;
+  }
+
+  header {
+    width: 89%;
+    margin-top: 18px;
+    margin-left: 16px;
+    margin-right: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+
+    img {
+      width: 88px;
+    }
+
+    svg {
+      font-size: 20px;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 2px;
+    }
+  }
+
+  .content {
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 40%;
+    margin-top: 1rem;
+
+    .heading {
+      margin-left: 18px;
+      p {
+        font-size: 1.875rem;
+        font-weight: 700;
+        line-height: 37px;
+        max-width: 16rem;
+        margin-bottom: 7px;
+      }
+
+      span {
+        font-size: 13px;
+        font-weight: 300;
+        line-height: 17.85px;
+        letter-spacing: 0.06em;
+        opacity: 0.9;
+        max-width: 20em;
+        display: block;
+      }
+    }
+
+    .subscribeContent {
+      margin-top: 2.6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+
+      p {
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      ul {
+        margin: 1em 0;
+        margin-top: 1rem;
+        padding-left: 0;
+        list-style-type: none;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 4px;
+
+          .icon {
+            width: 18px;
+            height: 18px;
+            @include flexCenter;
+            border-radius: 50%;
+            background-color: #fff;
+            color: $primary;
+            font-size: 12px;
+          }
+
+          span {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 26px;
+          }
+        }
+      }
+
+      .buttons {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+
+        button {
+          width: 50%;
+          height: 31px;
+          padding: 10px 10px 10px 10px;
+          @include flexCenter;
+          border-radius: 100px;
+          outline: none;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 16px;
+          border: 1px solid $primary;
+          background: $primary;
+          color: #fff;
+
+          &:nth-child(2) {
+            background: rgba($color: #3632ff, $alpha: 0.5);
+            border: 1px solid rgba($color: #3632ff, $alpha: 0.5);
+          }
+        }
+      }
+    }
+
+    .footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 3.5rem auto;
+      margin-top: 3rem;
+
+      p {
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 400;
+        color: #a1a3a7;
+        max-width: 85%;
+
+        a {
+          color: #fff;
+          text-decoration: underline;
+        }
+      }
+
+      button {
+        margin-top: 16px;
+        width: 75%;
+        height: 31px;
+        padding: 10px 28px 10px 28px;
+        @include flexCenter;
+        border-radius: 100px;
+        outline: none;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 16px;
+        background: rgba($color: #3632ff, $alpha: 0.5);
+        border: 1px solid rgba($color: #3632ff, $alpha: 0.5);
+        color: #fff;
+        gap: 4px;
+
+        p {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 16px;
+          margin: 0;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

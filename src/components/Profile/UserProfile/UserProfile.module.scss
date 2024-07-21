@@ -1,0 +1,226 @@
+@import "../../../styles/constants.scss";
+
+.container {
+  width: 100%;
+  height: fit-content;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  // background: #110e0f;
+
+  .banner {
+    width: 100%;
+    height: 156px;
+    object-fit: cover;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      // height: 100%;
+      vertical-align: middle;
+    }
+
+    .editCover{
+      @include flexCenter;
+      position: absolute;
+      bottom: 5.5%;
+      right: 3%;
+      width: 20px;
+      height: 20px;
+      background: $primary;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 14px;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .menuIcons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: absolute;
+      top: 1.5%;
+      left: 0;
+      right: 0;
+      padding: 10px 1.2rem;
+      font-size: 22px;
+      opacity: 0.95;
+
+      svg {
+        cursor: pointer;
+      }
+
+      .right {
+        display: flex;
+        align-items: center;
+        gap: 1.4rem;
+        justify-content: center;
+      }
+    }
+  }
+
+  .profileWrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .profile {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #110e0f;
+      position: relative;
+      margin-top: -3.5rem;
+      background-color: #110e0f;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        vertical-align: middle;
+        border-radius: 50%;
+      }
+
+      .plus {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        @include flexCenter;
+        font-size: 14px;
+        color: #fff;
+        background-color: $primary;
+        cursor: pointer;
+        z-index: 20;
+      }
+    }
+
+    .name {
+      text-align: center;
+      margin-top: 9px;
+      display: flex;
+      flex-direction: column;
+      gap: -5px;
+      height: 35px;
+
+      p {
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 22px;
+        margin-bottom: 0px;
+      }
+
+      span {
+        font-size: 12px;
+        font-weight: 200;
+        line-height: 18px;
+        color: #fff;
+        opacity: 50%;
+        margin-top: -0.5px;
+        text-align: center;
+      }
+    }
+  }
+
+  .likes {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    height: 40px;
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        line-height: 21px;
+      }
+
+      span {
+        color: #7b7b7b;
+        font-weight: 200;
+        font-size: 10px;
+        line-height: 15px;
+        text-align: center;
+        opacity: 1;
+      }
+    }
+  }
+
+  .profileBio {
+    margin-top: .9rem;
+    font-size: 13px;
+    font-weight: 200;
+    line-height: 16px;
+    text-align: center;
+    color: #fff;
+    max-width: 86%;
+    margin-left: auto;
+    margin-right: auto;
+
+    .addBio{
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 16px;
+      color: $primary;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+      user-select: none;
+    }
+  }
+
+  .profileBtns {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.4rem auto;
+    gap: 1.45rem;
+    margin-bottom: 1rem;
+
+    button {
+      width: 50%;
+      height: 33px;
+      padding: 8px 10px 8px 10px;
+      @include flexCenter;
+      border-radius: 100px;
+      border: 1px solid $primary;
+      outline: none;
+      background: $primary;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 16px;
+    }
+
+    button:nth-child(2) {
+      background: #292734;
+      border: none;
+    }
+  }
+
+}
+
+.e-tab .e-tab-header:not(.e-vertical) .e-indicator, .e-tab .e-tab-header.e-vertical .e-indicator {
+    transition: none;
+}

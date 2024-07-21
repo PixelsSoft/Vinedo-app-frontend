@@ -1,0 +1,134 @@
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;
+$xxl: 1536px;
+$primary: #3632ff;
+$white: #fff;
+$background: linear-gradient(170.28deg, #292734 -9.44%, #000000 100%);
+
+:root {
+  --plyr-color-main: #3632ff;
+  --plyr-video-background: rgba(0, 0, 0, 0.2);
+}
+
+// .plyr--video {
+//   border-radius: 8px;
+// }
+
+// .viewSingleVidePost .plyr--video {
+//   border-radius: 0px;
+// }
+
+// .player {
+//   width: 600px;
+//   height: 700px;
+//   aspect-ratio: unset;
+// }
+
+// .viewSingleVidePost .plyr__video-wrapper{
+//   max-height: 400px;
+// }
+
+// .video-js .vjs-control-bar {
+//   bottom: 24px;
+//   background-color: transparent !important;
+// }
+
+// .postPreview .video-js .vjs-control-bar {
+//   bottom: 16px;
+// }
+
+// .video-js .vjs-picture-in-picture-control {
+//   display: none;
+// }
+
+// .video-js .vjs-slider{
+//   background-color: #BDC5CD !important;
+// }
+
+// .video-js .vjs-progress-control .vjs-mouse-display{
+//   background-color: #BDC5CD !important;
+// }
+
+// .video-js .vjs-load-progress{
+//   background-color: #BDC5CD !important;
+// }
+
+// .video-js .vjs-play-progress {
+//   background-color: #3632ff !important;
+// }
+
+// .video-js .vjs-progress-holder{
+//   height: 0.2em !important;
+// }
+
+// .viewSingleVidePost .video-js .vjs-play-progress:before{
+//   font-size: 0;
+// }
+
+// .vjs-duration {
+//   display: inline-block !important;
+// }
+
+.postPreview .video-js .vjs-tech {
+  object-fit: cover;
+}
+
+// .viewSingleVidePost .video-js .vjs-tech {
+//   object-fit: cover;
+// }
+
+.postPreview .video-js {
+  height: 100%;
+  width: 100%;
+  background: rgba($color: #000000, $alpha: 0.8);
+  background: #110e0f;
+}
+
+// .viewSingleVidePost .video-js {
+//   height: 100%;
+//   width: 100%;
+//   background: rgba($color: #000000, $alpha: 0.8);
+// }
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin shadowSm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+@mixin shadowMd {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+@mixin button($width: 12rem, $height: 3rem, $background: $primary) {
+  width: $width;
+  height: $height;
+  border-radius: 3rem;
+  font-size: 1.13rem;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0;
+  text-align: center;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  text-transform: capitalize;
+  background-color: $background;
+  transition: all 0.3s;
+  z-index: 10;
+  gap: 8px;
+}
