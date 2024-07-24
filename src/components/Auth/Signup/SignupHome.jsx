@@ -15,6 +15,7 @@ import { useApiErrorHandling } from "../../../hooks/useApiErrors";
 import { Button } from "@nextui-org/react";
 import { ClipLoader } from "react-spinners";
 import { toastError } from "../../Toast/Toast";
+import AdultModal from "../../Adult/Modals/LogoutModal/AdultModal";
 
 const SignupHome = () => {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ const SignupHome = () => {
   const [show, setShow] = useState(false);
   const [signupWithGoogle, res] = useContinueWithGoogleMutation();
   const { isLoading, isSuccess, error } = res;
+  const [isAdultModal, setIsAdultModal] = useState(false);
 
   const apiErrors = useApiErrorHandling(error);
 
@@ -169,9 +171,19 @@ const SignupHome = () => {
                 >
                   Sign up with email
                 </button>
-                <p>
-                  Existing account? <Link to={"/login"}>Log in</Link>
+                <p  >
+                  Existing account?
+                 
+                   <Link  onClick={() => {
+                  setIsAdultModal(true);
+               
+                }} > Log in</Link>
                 </p>
+                {/* Adult Modal  */}
+        <AdultModal
+          isAdultModal={isAdultModal}
+          setAdultModal={setIsAdultModal}
+        />
               </div>
             </div>
           </div>
