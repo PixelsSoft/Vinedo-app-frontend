@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import css from "./AdultModal.module.scss";
 import { motion, AnimatePresence } from "framer-motion";
 import useClickOutside from "../../../../hooks/useClickOutside";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const AdultModal = ({ isAdultModal, setAdultModal}) => {
+const AdultModal = ({ isAdultModal, setAdultModal,setIsPrivacyModal,setIsTocModal}) => {
   const modalRef = useRef(null);
 
-  useClickOutside(modalRef, () => setAdultModal(false));
+  // useClickOutside(modalRef, () => setAdultModal(false));
   const navigate = useNavigate();
   const handleAdultModal = ()=>{
     navigate("/login");
@@ -36,7 +36,18 @@ const AdultModal = ({ isAdultModal, setAdultModal}) => {
             >
               <h1   className={css.heading}>18+ </h1>
               <p style={{fontSize:18, fontWeight:"bold"}}>ADULTS ONLY </p>
-              <p>Please confirm that you are over 18 or leave the website </p>
+              <p>Please confirm that you are over 18 and agree with 
+                
+                <Link 
+                onClick={async()=>{
+                  // await setAdultModal(false)
+                 await  setIsTocModal(true)
+                   }} 
+                style={{color: "#3632ff"}}> ToS</Link> &
+                 <Link onClick={async()=>{
+                //  await setAdultModal(false)
+                await  setIsPrivacyModal(true)
+                  }} style={{color: "#3632ff"}}> Privacy Policy </Link>or leave the website.</p>
               <div className={css.buttons}>
                 <button onClick={handleAdultModal}>Yes</button>
                 <button onClick={() => setAdultModal(false)}>No</button>

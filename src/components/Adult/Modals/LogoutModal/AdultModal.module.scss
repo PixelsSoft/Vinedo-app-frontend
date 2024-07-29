@@ -13,7 +13,7 @@
     @include flexCenter;
 
     .selectCard {
-      width: 80%;
+      width: 90%;
       // height: 150px;
       padding: 20px 34px;
       margin: auto;
@@ -60,6 +60,10 @@
         border: 1px solid $primary;
         background: $primary;
         color: #fff;
+      }
+      Link{
+        color:$primary;
+        font-size: 12px;
       }
     }
   }

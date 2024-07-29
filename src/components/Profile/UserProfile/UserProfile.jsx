@@ -14,6 +14,7 @@ import ShareProfileModal from "../Modals/ShareProfileModal/ShareProfileModal";
 import DeleteAccountModal from "../Modals/DeleteAccountModal/DeleteAccountModal";
 import TermsServicesModal from "../Modals/TermsServicesModal/TermsServicesModal";
 import PrivacyServicesModal from "../Modals/PrivacyServicesModal/PrivacyServicesModal";
+import AdultModal from "../../Adult/Modals/LogoutModal/AdultModal";
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -23,6 +24,8 @@ const UserProfile = () => {
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [isTermsModal, setIsTermsModal] = useState(false);
   const [isPrivacyModal, setIsPrivacyModal] = useState(false);
+  const [isAdultModal, setIsAdultModal] = useState(false);
+
 
   const {
     data,
@@ -102,6 +105,7 @@ const UserProfile = () => {
           setIsDeleteModal={setIsDeleteModal}
           setIsTermsModal={setIsTermsModal}
           setIsPrivacyModal={setIsPrivacyModal}
+          setIsAdultModal={setIsAdultModal}
         />
 
         {/* Share Profile Modal  */}
@@ -133,6 +137,11 @@ const UserProfile = () => {
         <PrivacyServicesModal
           isPrivacyModal={isPrivacyModal}
           setIsPrivacyModal={setIsPrivacyModal}
+        />
+         {/* Adult Modal  */}
+         <AdultModal
+          isAdultModal={isAdultModal}
+          setAdultModal={setIsAdultModal}
         />
       </div>
     </div>

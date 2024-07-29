@@ -138,4 +138,21 @@ body.no-screenshot::before {
   z-index: 9999;
   pointer-events: none;
 }
+.fixed-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $background;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
+.fullscreen {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}

@@ -93,7 +93,7 @@ const Login = () => {
         <header>
           <IoIosArrowBack
             className="cursor-pointer"
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/")}
           />
         </header>
         <div className={css.heading}>
