@@ -1,12 +1,15 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from "react";
 import css from "./SearchCreators.module.scss";
 import { IoSearch } from "react-icons/io5";
-import { useNavigate } from 'react-router-dom';
-import TopCreators from './TopCreators';
-import SearchResults from './SearchResults';
-import BottomResults from './BottomResults';
-import { useGetTop20CreatorsQuery, useSearchCreatorsQuery } from '../../services/api/creatorsApi/creatorsApi';
-import { ClipLoader } from 'react-spinners';
+import { useNavigate } from "react-router-dom";
+import TopCreators from "./TopCreators";
+import SearchResults from "./SearchResults";
+import BottomResults from "./BottomResults";
+import {
+  useGetTop20CreatorsQuery,
+  useSearchCreatorsQuery,
+} from "../../services/api/creatorsApi/creatorsApi";
+import { ClipLoader } from "react-spinners";
 
 const SearchCreators = () => {
   const navigate = useNavigate();
@@ -18,13 +21,12 @@ const SearchCreators = () => {
   const { data, isFetching } = useSearchCreatorsQuery(debouncedSearchText, {
     skip: debouncedSearchText.length === 0,
   });
- 
 
-  useMemo(()=>{
-    if(data){
+  useMemo(() => {
+    if (data) {
       setResults(data.users);
     }
-  },[data]);
+  }, [data]);
 
   //  Get top 20 creators
   const { data: topCreators, isLoading: isLoadingTopCreators } =
@@ -87,18 +89,25 @@ const SearchCreators = () => {
       )}
 
       {/* Empty Data  */}
-      {!isSearching && searchText.length > 0 && !isFetching && results?.length === 0 && (
-        <div className="h-[100px] w-full flex items-center justify-center">
-          <p className="text-white text-sm font-medium">No Result found!</p>
-        </div>
-      )}
+      {!isSearching &&
+        searchText.length > 0 &&
+        !isFetching &&
+        results?.length === 0 && (
+          <div className="h-[100px] w-full flex items-center justify-center">
+            <p className="text-white text-sm font-medium">No Result found!</p>
+          </div>
+        )}
 
       {/* Search Results  */}
       {!isFetching && searchText.length > 0 && (
-        <SearchResults data={results} isFetching={isFetching} />
+        <div
+          className={`${css.scroll} overflow-y-scroll max-h-[80vh] scroll-0`}
+        >
+          <SearchResults data={results} isFetching={isFetching} />
+        </div>
       )}
     </div>
   );
-}
+};
 
-export default SearchCreators
+export default SearchCreators;
