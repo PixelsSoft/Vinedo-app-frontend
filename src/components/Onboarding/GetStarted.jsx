@@ -27,19 +27,19 @@ const GetStarted = () => {
         </span>
         {/* Privacy Policy Modal  */}
         <PrivacyServicesModal
-          isPrivacyModal={isPrivacyModal}
+          isPrivacyModal={true}   
           setIsPrivacyModal={setIsPrivacyModal}
         />
         {/* Toc Modal  */}
         <TocServicesModal
-          isTocModal={isTocModal}
+          isTocModal={true}
           setIsTocModal={setIsTocModal}
         />
          {/* Adult Modal  */}
          <AdultModal
          setIsTocModal={setIsTocModal}
          setIsPrivacyModal={setIsPrivacyModal}
-          isAdultModal={isAdultModal}
+          isAdultModal={true}
           setAdultModal={setIsAdultModal}
         />
       </div>

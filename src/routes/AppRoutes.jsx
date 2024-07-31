@@ -25,6 +25,7 @@ import PaymentSuccessPage from "../pages/PaymentSuccessPage";
 import StripePaymentFormPage from "../pages/StripePaymentFormPage";
 import NotFound from "../components/NotFound/NotFound";
 import AddBankDetailsPage from "../pages/AddBankDetailsPage";
+import EditBio from "../components/EditProfile/EditFields/EditBio";
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
       {
         path: "edit/price/:value",
         element: <Protected Component={EditPrice} />,
+      },
+      {
+        path: "edit/bio/:value",
+        element: <Protected Component={EditBio} />,
       },
       {
         path: "posts/:postId",

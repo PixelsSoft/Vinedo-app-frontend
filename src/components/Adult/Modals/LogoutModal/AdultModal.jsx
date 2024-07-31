@@ -40,13 +40,14 @@ const AdultModal = ({ isAdultModal, setAdultModal,setIsPrivacyModal,setIsTocModa
                 
                 <Link 
                 onClick={async()=>{
-                  // await setAdultModal(false)
+                  await setAdultModal(false)
                  await  setIsTocModal(true)
                    }} 
                 style={{color: "#3632ff"}}> ToS</Link> &
                  <Link onClick={async()=>{
-                //  await setAdultModal(false)
+                 await setAdultModal(false)
                 await  setIsPrivacyModal(true)
+                
                   }} style={{color: "#3632ff"}}> Privacy Policy </Link>or leave the website.</p>
               <div className={css.buttons}>
                 <button onClick={handleAdultModal}>Yes</button>

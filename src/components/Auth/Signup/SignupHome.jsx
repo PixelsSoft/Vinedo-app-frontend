@@ -16,9 +16,14 @@ import { Button } from "@nextui-org/react";
 import { ClipLoader } from "react-spinners";
 import { toastError } from "../../Toast/Toast";
 import AdultModal from "../../Adult/Modals/LogoutModal/AdultModal";
+import TermsServicesModal from "../../Profile/Modals/TermsServicesModal/TermsServicesModal";
+import PrivacyServicesModal from "../../Profile/Modals/PrivacyServicesModal/PrivacyServicesModal";
 
 const SignupHome = () => {
   const navigate = useNavigate();
+  const [isPrivacyModal, setIsPrivacyModal] = useState(false);
+
+  const [isTocModal, setIsTocModal] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const token = localStorage.getItem("vineo_authToken");
   const {
@@ -38,18 +43,18 @@ const SignupHome = () => {
 
   const apiErrors = useApiErrorHandling(error);
 
-  useEffect(()=>{
-    if(apiErrors && error?.status === 422){
-      toastError(apiErrors?.map((item)=> `${item}. `));
+  useEffect(() => {
+    if (apiErrors && error?.status === 422) {
+      toastError(apiErrors?.map((item) => `${item}. `));
     }
-  },[apiErrors]);
+  }, [apiErrors]);
 
   const handleSigninWithGoogle = useGoogleLogin({
     onSuccess: async (res) => {
       const { data: result } = await signupWithGoogle({
         token: res.access_token,
       });
-     
+
       if (result?.success) {
         localStorage.setItem("vineo_authToken", result?.token);
 
@@ -171,19 +176,35 @@ const SignupHome = () => {
                 >
                   Sign up with email
                 </button>
-                <p  >
+                <p>
                   Existing account?
-                 
-                   <Link  onClick={() => {
-                  setIsAdultModal(true);
-               
-                }} > Log in</Link>
+                  <Link
+                    onClick={() => {
+                      setIsAdultModal(true);
+                    }}
+                  >
+                    {" "}
+                    Log in
+                  </Link>
                 </p>
+                {/* Terms of services Modal  */}
+                <TermsServicesModal
+                  isTermsModal={isTocModal}
+                  setIsTermsModal={setIsTocModal}
+                />
+
+                {/* Privacy Policy Modal  */}
+                <PrivacyServicesModal
+                  isPrivacyModal={isPrivacyModal}
+                  setIsPrivacyModal={setIsPrivacyModal}
+                />
                 {/* Adult Modal  */}
-        <AdultModal
-          isAdultModal={isAdultModal}
-          setAdultModal={setIsAdultModal}
-        />
+                <AdultModal
+                  isAdultModal={isAdultModal}
+                  setAdultModal={setIsAdultModal}
+                  setIsTocModal={setIsTocModal}
+                  setIsPrivacyModal={setIsPrivacyModal}
+                />
               </div>
             </div>
           </div>

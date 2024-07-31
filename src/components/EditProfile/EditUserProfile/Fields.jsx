@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { TiTick } from "react-icons/ti";
 
 const Fields = ({data, isLoading}) => {
+  console.log('data',data);
     const navigate = useNavigate();
    const [isCopied, setIsCopied] = useState(false);
    const profileLink = `vinedo.app/@${data?.user.username}`; 
@@ -75,6 +76,16 @@ const Fields = ({data, isLoading}) => {
         <p>Creator’s Tool</p>
         <div className={css.right}>
           <p>Earnings</p>
+          <IoChevronForward />
+        </div>
+      </div>
+      <div
+        className={css.input}
+        onClick={() => data && navigate(`/edit/bio/${data?.user.description}`)}
+      >
+        <p>Edit Bio</p>
+        <div className={css.right}>
+          <p>{data?.user?.description}</p>
           <IoChevronForward />
         </div>
       </div>
