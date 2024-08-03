@@ -141,13 +141,16 @@
         flex-direction: column;
         align-items: center;
         gap: 6px;
+        color: #ffffff;
+        
 
         span {
           font-size: 12px;
           font-weight: 400;
           line-height: 18px;
           letter-spacing: -0.3px;
-          color: #bdc5cd;
+          // color: #bdc5cd;
+          color: #ffffff;
         }
       }
     }

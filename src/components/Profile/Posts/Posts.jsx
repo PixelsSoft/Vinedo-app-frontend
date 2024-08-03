@@ -12,7 +12,7 @@ const Posts = ({ posts }) => {
 
   return (
     <div className={css.posts}>
-      {posts?.map(
+      {posts?.slice().reverse()?.map(
         (item) =>
           item?.type === 0 && (
             <div

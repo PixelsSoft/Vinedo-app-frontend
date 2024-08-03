@@ -55,7 +55,7 @@ const HeartButton = ({ isLiked, handleClick, error, likes, setLikes }) => {
         />
         <label
           htmlFor="toggle-heart"
-          style={{ color: liked ? "#3632ff" : "" }}
+          style={{ color: liked ? "#3632ff" : "#ffffff" }}
         >
           <FaHeart />
         </label>
