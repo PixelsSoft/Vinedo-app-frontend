@@ -6,6 +6,9 @@ import starFilled from "../../../assets/starFilled.svg";
 import HeartButton from '../../ui/HeartButton/HeartButton';
 import { useLikeAPostMutation } from '../../../services/api/postApi/postApi';
 import voteFilled from "../../../assets/voteFilled.svg";
+import { FaStar } from "react-icons/fa";
+
+import { FaRegStar } from "react-icons/fa";
 
 const BottomPostActions = ({ data, setIsRatingModal, postId }) => {
   const [likes, setLikes] = useState(data?.likes);
@@ -45,7 +48,22 @@ const BottomPostActions = ({ data, setIsRatingModal, postId }) => {
             className={css.item}
             onClick={() => setIsRatingModal(true)}
           >
-            <img src={data?.isRated ? starFilled : star} alt="" />
+            {data?.isRated  ?
+           <label
+           htmlFor="toggle-heart"
+           style={{ color: "#FFFF00" }}
+         >
+           <FaStar />
+         </label>
+         :
+         <label
+         htmlFor="toggle-heart"
+         style={{ color: "#ffffff" }}
+       >
+         <FaRegStar />
+       </label>
+        }
+            {/* <img src={data?.isRated ? starFilled : star} alt="" /> */}
             <span>
               {data?.rating ? parseFloat(data.rating).toFixed(1) : "0.0"}
             </span>

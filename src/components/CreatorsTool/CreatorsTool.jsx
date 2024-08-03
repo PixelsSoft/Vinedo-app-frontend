@@ -72,6 +72,8 @@ const CreatorsTool = () => {
 
 
   return (
+    <div className="w-screen min-h-screen bg-[#110e0f] md:max-w-sm overflow-x-hidden scrollbar-hide flex items-center flex-col md:mx-auto">
+      
     <div className={css.wrapper}>
       {/* Confirmation Modal  */}
       <ConfirmModal
@@ -95,7 +97,8 @@ const CreatorsTool = () => {
             <>
               <span>€</span>
               <p>{data?.user.balance}</p>
-              <span>K</span>
+              {data?.user?.balance>0 &&     <span>K</span>}
+          
             </>
           )}
         </div>
@@ -114,6 +117,7 @@ const CreatorsTool = () => {
 
       {/* Bank Account Details Button  */}
    
+    </div>
     </div>
   );
 };
