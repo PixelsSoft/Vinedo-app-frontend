@@ -144,6 +144,7 @@
 // };
 
 // export default ViewPost;
+
 import React, { useEffect, useState } from "react";
 import css from "./ViewPost.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
@@ -233,7 +234,6 @@ const ViewPost = () => {
             </div>
           </div>
         )}
-
         <AnimatePresence mode="wait">
           <motion.div
             key="postImage"
@@ -271,13 +271,18 @@ const ViewPost = () => {
           </motion.div>
         </AnimatePresence>
 
+
+
         {!isLoading && data && areActionsVisible && (
+        
           <BottomPostActions
             data={data}
             postId={postId}
             setIsRatingModal={setIsRatingModal}
           />
-        )}
+
+        )}      
+  
 
         <RatingModal
           isRatingModal={isRatingModal}
@@ -289,3 +294,4 @@ const ViewPost = () => {
 };
 
 export default ViewPost;
+

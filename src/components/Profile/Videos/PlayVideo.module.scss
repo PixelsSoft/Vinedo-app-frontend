@@ -9,6 +9,8 @@
   scrollbar-width: 0;
 
   .header {
+    background-color: rgba(0, 0, 0, 0.5); 
+    width: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -93,8 +95,12 @@
 
   // Bottom Post Action
   .bottomActionsWrap {
-    position: fixed;
-    top: 84%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    width: 100%;
+    // position: fixed;
+    position: absolute;
+    bottom: 0%;
+    // top: 84%;
     left: 0;
     right: 0;
     height: 15vh;

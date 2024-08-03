@@ -48,22 +48,22 @@ const BottomPostActions = ({ data, setIsRatingModal, postId }) => {
             className={css.item}
             onClick={() => setIsRatingModal(true)}
           >
-            {data?.isRated  ?
+            {/* {data?.isRated  ?
            <label
-           htmlFor="toggle-heart"
+          //  htmlFor="toggle-heart"
            style={{ color: "#FFFF00" }}
          >
            <FaStar />
          </label>
          :
          <label
-         htmlFor="toggle-heart"
+        //  htmlFor="toggle-heart"
          style={{ color: "#ffffff" }}
        >
          <FaRegStar />
        </label>
-        }
-            {/* <img src={data?.isRated ? starFilled : star} alt="" /> */}
+        } */}
+            <img src={data?.isRated ? starFilled : star} alt="" />
             <span>
               {data?.rating ? parseFloat(data.rating).toFixed(1) : "0.0"}
             </span>
