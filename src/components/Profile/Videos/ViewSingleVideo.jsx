@@ -228,7 +228,7 @@ const ViewSingleVideo = () => {
 
   return (
     <div
-      className="viewSingleVidePost w-screen h-screen bg-[#110e0f] md:max-w-sm overflow-x-hidden scrollbar-hide flex justify-center items-center flex-col md:mx-auto"
+      className="viewSingleVidePost w-screen h-screen bg-[#000000] md:max-w-sm overflow-x-hidden scrollbar-hide flex justify-center items-center flex-col md:mx-auto"
       onContextMenu={(e) => e.preventDefault()}
       onClick={toggleVisibility}
     >
@@ -243,7 +243,7 @@ const ViewSingleVideo = () => {
             transition={{
               duration: 0.22,
             }}
-            style={{ height: "100%", width: "100%", position: "relative" }}
+            style={{ height: "100%", width: "100%", position: "relative" ,alignContent:"center"}}
           >
             {isVisible && (
               <div className={css.header}>
@@ -284,7 +284,7 @@ const ViewSingleVideo = () => {
                 </div>
               ) : (
                 <video
-                  style={{ height: "100%" }}
+                  style={{ height: "100%",}}
                   className={css.video}
                   controls
                   autoPlay

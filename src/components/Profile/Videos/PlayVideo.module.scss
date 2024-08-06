@@ -5,7 +5,8 @@
   height: 100vh;
   overflow-x: hidden;
   position: relative;
-  background: #110e0f;
+  background: #000000;
+
   scrollbar-width: 0;
 
   .header {
@@ -76,10 +77,12 @@
 
   .postImage {
     width: 100%;
-    height: 82vh;
+
+    // height: 82vh;
+
     overflow: hidden;
     @include flexCenter;
-    background: #110e0f;
+    background: #000000;
     img {
       display: block;
       width: 100%;
