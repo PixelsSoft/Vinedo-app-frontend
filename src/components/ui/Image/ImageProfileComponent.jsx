@@ -71,6 +71,7 @@ const ImageProfileComponent = ({ src, className, radius }) => {
     <img
       src={src}
       className={className}
+
       alt=""
       style={{
         borderColor:"#3632ff",
