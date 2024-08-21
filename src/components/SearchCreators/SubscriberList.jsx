@@ -94,7 +94,7 @@ const SubscriberList = ({ searchText, data }) => {
   const res = data;
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.auth);
-
+console.log(res?.length)
   const handleNavigate = (item) => {
     if (user?.id === item.id) {
       navigate("/profile");
@@ -116,7 +116,14 @@ const SubscriberList = ({ searchText, data }) => {
         <span style={{ color: "#3632ff" }}>Subscriptions</span>
         <div style={{ flex: 1, borderBottom: '1px solid #3632ff', margin: '0 10px' }}></div>
       </div>
+{res?.length===0 && 
+<div style={{ width: '100%',  textAlign:"center"}} >
+  <p style={{color:"white", fontSize:12,}}>
+  You haven't subscribed to anyone yet
+  </p>
+  </div>
 
+}
       <div
         style={{
           display: "flex",

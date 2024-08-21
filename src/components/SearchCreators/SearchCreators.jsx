@@ -98,7 +98,7 @@ const SearchCreators = () => {
           {/* Top Creators  */}
           {searchText.length === 0 && <TopCreators data={topCreators} />}
           {/*  Subcribers  */}
-          {searchText.length === 0 && subscriberListData.length>0&&<SubscriberList data={subscriberListData} />}
+          {searchText.length === 0 && <SubscriberList data={subscriberListData} />}
 
           {/* Bottom Results  */}
           {searchText.length === 0 && (
