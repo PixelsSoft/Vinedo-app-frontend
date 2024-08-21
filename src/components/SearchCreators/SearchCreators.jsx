@@ -95,10 +95,11 @@ const SearchCreators = () => {
         </div>
       ) : (
         <>
+           {/*  Subcribers  */}
+           {searchText.length === 0 && <SubscriberList data={subscriberListData} />}
           {/* Top Creators  */}
           {searchText.length === 0 && <TopCreators data={topCreators} />}
-          {/*  Subcribers  */}
-          {searchText.length === 0 && <SubscriberList data={subscriberListData} />}
+       
 
           {/* Bottom Results  */}
           {searchText.length === 0 && (
