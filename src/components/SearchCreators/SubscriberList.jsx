@@ -21,9 +21,9 @@
 
 //   return (
 //     <div className={css.searchResults}>
- 
+
 //       {res?.slice(3).map((item, index) => (
-//         <div style={{ 
+//         <div style={{
 //           //  width: 60,
 //           // backgroundColor:"red",
 //           flexDirection:"column",
@@ -37,14 +37,14 @@
 //                      import.meta.env.VITE_PROFILE_PICTURE + item?.profile_picture
 //                    }
 //                    alt=""
-                   
+
 //                    radius="full"
 //                    width={42}
 //                   height={42}
 //                  className="rounded-full"
 //                  />
 //             </div>
-          
+
 //            <div style={{justifyContent:"center",alignItems:"center", display: "flex",
 //           flexDirection: "column",
 //           gap: 2}}>
@@ -74,9 +74,9 @@
 //         //         <span>{item.username}</span>
 //         //       </div>
 //         //     </div>
-            
+
 //         //   </div>
-         
+
 //         // </div>
 //       ))}
 //     </div>
@@ -94,7 +94,7 @@ const SubscriberList = ({ searchText, data }) => {
   const res = data;
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.auth);
-console.log(res?.length)
+
   const handleNavigate = (item) => {
     if (user?.id === item.id) {
       navigate("/profile");
@@ -104,26 +104,42 @@ console.log(res?.length)
   };
 
   return (
-    <div className={`${css.wrapper} md:max-w-sm md:mx-auto`} style={{width:"100vw"}}>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        textAlign: 'center',
-        width: '100%',
-        margin: '20px 0'
-      }}>
-        <div style={{ flex: 1, borderBottom: '1px solid #3632ff', margin: '0 10px' }}></div>
-        <span style={{ color: "#3632ff" }}>Subscriptions</span>
-        <div style={{ flex: 1, borderBottom: '1px solid #3632ff', margin: '0 10px' }}></div>
+    <div
+      className={`${css.wrapper} md:max-w-sm md:mx-auto`}
+      style={{ width: "100vw" }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          textAlign: "center",
+          width: "100%",
+          // margin: '20px 0'
+        }}
+      >
+        <div
+          style={{
+            flex: 1,
+            borderBottom: "1px solid #3632ff",
+            margin: "0 15px",
+          }}
+        ></div>
+        <span style={{ color: "#3632ff" , fontSize:14}}>Subscriptions</span>
+        <div
+          style={{
+            flex: 1,
+            borderBottom: "1px solid #3632ff",
+            margin: "0 15px",
+          }}
+        ></div>
       </div>
-{res?.length===0 && 
-<div style={{ width: '100%',  textAlign:"center"}} >
-  <p style={{color:"white", fontSize:12,}}>
-  You haven't subscribed to anyone yet
-  </p>
-  </div>
-
-}
+      {res?.length === 0 && (
+        <div style={{ width: "100%", textAlign: "center" }}>
+          <p style={{ color: "white", fontSize: 12 }}>
+            You haven't subscribed to anyone yet
+          </p>
+        </div>
+      )}
       <div
         style={{
           display: "flex",
@@ -133,7 +149,7 @@ console.log(res?.length)
           WebkitOverflowScrolling: "touch", // Enables momentum scrolling on iOS
           scrollbarWidth: "none", // Hides scrollbar for Firefox
           msOverflowStyle: "none", // Hides scrollbar for IE and Edge
-          width: '100%', // Ensure the container has a width
+          width: "100%", // Ensure the container has a width
         }}
         className="hide-scrollbar"
       >
@@ -170,18 +186,23 @@ console.log(res?.length)
               }}
             >
               <ImageProfileComponent
-                src={import.meta.env.VITE_PROFILE_PICTURE + item?.profile_picture}
+                src={
+                  import.meta.env.VITE_PROFILE_PICTURE + item?.profile_picture
+                }
                 alt=""
                 radius="full"
                 className="rounded-full"
               />
             </div>
 
-            <p style={{ color: "#ffffff", fontSize: 14 }}>{item?.name}</p>
-            <span style={{ color: "#A1A3A7", fontSize: 10 }}>{item?.username}</span>
+            <p style={{ color: "#ffffff", fontSize: 12 , margin:"0 10px"}}>{item?.name}</p>
+            {/* <span style={{ color: "#A1A3A7", fontSize: 10 }}>
+              {item?.username}
+            </span> */}
           </div>
         ))}
       </div>
+      <div className={css.divider}></div>
     </div>
   );
 };

@@ -19,7 +19,9 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
-    padding: 18px;
+    padding-top: 18px;
+    padding-left: 18px;
+    padding-right: 18px;
 
     .searchBox {
       position: static;
@@ -81,7 +83,7 @@
       width: 86%;
       min-height: 106px;
       margin: 2.4rem auto;
-      margin-top: 6rem;
+      margin-top: 7rem;
       background-color: #111017;
       border-radius: 15px;
       display: flex;
@@ -242,7 +244,8 @@
     width: 97%;
     height: 0.5px;
     background-color: #7B7B7B;
-    margin: .7rem auto;
+    margin: 0rem auto;
+   
     opacity: .5;
   }
 
