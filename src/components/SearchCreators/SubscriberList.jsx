@@ -195,7 +195,7 @@ const SubscriberList = ({ searchText, data }) => {
               />
             </div>
 
-            <p style={{ color: "#ffffff", fontSize: 12 , margin:"0 10px"}}>{item?.name}</p>
+            <p style={{ color: "#ffffff", fontSize: 12 , }}>{item?.name}</p>
             {/* <span style={{ color: "#A1A3A7", fontSize: 10 }}>
               {item?.username}
             </span> */}

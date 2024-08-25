@@ -1,3 +1,158 @@
+// import React, { useEffect, useMemo, useState } from "react";
+// import css from "./SearchCreators.module.scss";
+// import { IoSearch } from "react-icons/io5";
+// import { useNavigate } from "react-router-dom";
+// import TopCreators from "./TopCreators";
+// import SearchResults from "./SearchResults";
+// import BottomResults from "./BottomResults";
+// import {
+//   useGetTop20CreatorsQuery,
+//   useSearchCreatorsQuery,
+// } from "../../services/api/creatorsApi/creatorsApi";
+// import { ClipLoader } from "react-spinners";
+// import SubscriberList from "./SubscriberList";
+// import axios from "axios";
+
+// const SearchCreators = () => {
+//   const navigate = useNavigate();
+//   const [searchText, setSearchText] = useState("");
+//   const [debouncedSearchText, setDebouncedSearchText] = useState("");
+//   const [results, setResults] = useState(null);
+//   const [isSearching, setIsSearching] = useState(false);
+//   const [subscriberListData, setSubscriberListData] = useState([]);
+//   const authToken = localStorage.getItem("vineo_authToken");
+//   const userID = localStorage.getItem("userID");
+
+
+//   const { data, isFetching } = useSearchCreatorsQuery(debouncedSearchText, {
+//     skip: debouncedSearchText.length === 0,
+//   });
+
+//   useMemo(() => {
+//     if (data) {
+//       setResults(data.users);
+//     }
+//   }, [data]);
+
+//   //  Get top 20 creators
+//   const { data: topCreators, isLoading: isLoadingTopCreators } =
+//     useGetTop20CreatorsQuery();
+
+
+//  const getSubscriber=async()=>{
+//   await axios.get(`https://backend.vinedo.app/api/user/get-subscribed-creators/${userID}`, {
+//     headers: {
+// 'Authorization': `Bearer ${authToken}`
+//     }
+// })
+// .then((res) => {
+//   setSubscriberListData(res?.data?.data)
+//   console.log(res?.data)
+//   })
+// .catch((err) => console.error(err));
+//  }   
+
+//  useEffect(() => {
+//   const handleFocus = () => {
+//     getSubscriber();
+//   };
+
+//   window.addEventListener("focus", handleFocus);
+
+//   return () => {
+//     window.removeEventListener("focus", handleFocus);
+//   };
+// }, []);
+
+
+// useEffect(() => {
+//   refetch();  // Optionally trigger a manual refetch when the component mounts
+// }, []);
+
+//   useEffect(() => {
+//     const timeoutId = setTimeout(() => {
+//       setDebouncedSearchText(searchText);
+//       setIsSearching(false);
+//     }, 1000);
+
+//     return () => clearTimeout(timeoutId);
+//   }, [searchText]);
+
+//   const handleSearchChange = (e) => {
+//     setSearchText(e.target.value);
+//     setIsSearching(true);
+//   };
+
+//   return (
+//     <div className={`${css.wrapper} md:max-w-sm md:mx-auto`}>
+
+//       <header>
+//         <div className={css.searchBox}>
+//           <IoSearch />
+//           <input
+//             type="text"
+//             maxLength={70}
+//             value={searchText}
+//             onChange={handleSearchChange}
+//             placeholder="Search for creators"
+//           />
+//         </div>
+//         <button type="button" onClick={() => navigate("/profile")}>
+//           Cancel
+//         </button>
+//       </header>
+
+//       {/* Show Loader fetching search results */}
+//       {isLoadingTopCreators ? (
+//         <div className="h-[400px] w-full flex items-center justify-center">
+//           <ClipLoader color="#3632FF" size={38} speedMultiplier={0.94} />
+//         </div>
+//       ) : (
+//         <>
+//            {/*  Subcribers  */}
+//            {searchText.length === 0 && <SubscriberList data={subscriberListData} />}
+//           {/* Top Creators  */}
+//           {searchText.length === 0 && <TopCreators data={topCreators} />}
+       
+
+//           {/* Bottom Results  */}
+//           {searchText.length === 0 && (
+//             <BottomResults data={topCreators} searchText={searchText} />
+//           )}
+//         </>
+//       )}
+
+//       {/* Show Loader Fetching Top Creators  */}
+//       {isFetching && (
+//         <div className="h-[250px] w-full flex items-center justify-center">
+//           <ClipLoader color="#3632FF" size={38} speedMultiplier={0.94} />
+//         </div>
+//       )}
+
+//       {/* Empty Data  */}
+//       {!isSearching &&
+//         searchText.length > 0 &&
+//         !isFetching &&
+//         results?.length === 0 && (
+//           <div className="h-[100px] w-full flex items-center justify-center">
+//             <p className="text-white text-sm font-medium">No Result found!</p>
+//           </div>
+//         )}
+
+//       {/* Search Results  */}
+//       {!isFetching && searchText.length > 0 && (
+//         <div
+//           className={`${css.scroll} overflow-y-scroll max-h-[80vh] scroll-0`}
+//         >
+         
+//           <SearchResults data={results} isFetching={isFetching} />
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default SearchCreators;
 import React, { useEffect, useMemo, useState } from "react";
 import css from "./SearchCreators.module.scss";
 import { IoSearch } from "react-icons/io5";
@@ -23,7 +178,6 @@ const SearchCreators = () => {
   const authToken = localStorage.getItem("vineo_authToken");
   const userID = localStorage.getItem("userID");
 
-
   const { data, isFetching } = useSearchCreatorsQuery(debouncedSearchText, {
     skip: debouncedSearchText.length === 0,
   });
@@ -34,27 +188,40 @@ const SearchCreators = () => {
     }
   }, [data]);
 
-  //  Get top 20 creators
+  // Get top 20 creators
   const { data: topCreators, isLoading: isLoadingTopCreators } =
     useGetTop20CreatorsQuery();
 
-
- const getSubscriber=async()=>{
-  await axios.get(`https://backend.vinedo.app/api/user/get-subscribed-creators/${userID}`, {
-    headers: {
-'Authorization': `Bearer ${authToken}`
+  const getSubscriber = async () => {
+    try {
+      const res = await axios.get(
+        `https://backend.vinedo.app/api/user/get-subscribed-creators/${userID}`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      setSubscriberListData(res?.data?.data);
+    } catch (err) {
+      console.error(err);
     }
-})
-.then((res) => {
-  setSubscriberListData(res?.data?.data)
-  console.log(res?.data)
-  })
-.catch((err) => console.error(err));
- }   
+  };
 
   useEffect(() => {
-    getSubscriber()
+    getSubscriber();
+
+    const handleFocus = () => {
+      getSubscriber();
+    };
+
+    window.addEventListener("focus", handleFocus);
+
+    return () => {
+      window.removeEventListener("focus", handleFocus);
+    };
   }, []);
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setDebouncedSearchText(searchText);
@@ -71,7 +238,6 @@ const SearchCreators = () => {
 
   return (
     <div className={`${css.wrapper} md:max-w-sm md:mx-auto`}>
-
       <header>
         <div className={css.searchBox}>
           <IoSearch />
@@ -95,11 +261,12 @@ const SearchCreators = () => {
         </div>
       ) : (
         <>
-           {/*  Subcribers  */}
-           {searchText.length === 0 && <SubscriberList data={subscriberListData} />}
+          {/*  Subscribers  */}
+          {searchText.length === 0 && (
+            <SubscriberList data={subscriberListData} />
+          )}
           {/* Top Creators  */}
           {searchText.length === 0 && <TopCreators data={topCreators} />}
-       
 
           {/* Bottom Results  */}
           {searchText.length === 0 && (
@@ -130,7 +297,6 @@ const SearchCreators = () => {
         <div
           className={`${css.scroll} overflow-y-scroll max-h-[80vh] scroll-0`}
         >
-         
           <SearchResults data={results} isFetching={isFetching} />
         </div>
       )}
