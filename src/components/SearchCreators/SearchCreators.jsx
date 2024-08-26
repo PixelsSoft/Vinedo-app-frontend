@@ -23,7 +23,6 @@
 //   const authToken = localStorage.getItem("vineo_authToken");
 //   const userID = localStorage.getItem("userID");
 
-
 //   const { data, isFetching } = useSearchCreatorsQuery(debouncedSearchText, {
 //     skip: debouncedSearchText.length === 0,
 //   });
@@ -38,7 +37,6 @@
 //   const { data: topCreators, isLoading: isLoadingTopCreators } =
 //     useGetTop20CreatorsQuery();
 
-
 //  const getSubscriber=async()=>{
 //   await axios.get(`https://backend.vinedo.app/api/user/get-subscribed-creators/${userID}`, {
 //     headers: {
@@ -50,7 +48,7 @@
 //   console.log(res?.data)
 //   })
 // .catch((err) => console.error(err));
-//  }   
+//  }
 
 //  useEffect(() => {
 //   const handleFocus = () => {
@@ -63,7 +61,6 @@
 //     window.removeEventListener("focus", handleFocus);
 //   };
 // }, []);
-
 
 // useEffect(() => {
 //   refetch();  // Optionally trigger a manual refetch when the component mounts
@@ -113,7 +110,6 @@
 //            {searchText.length === 0 && <SubscriberList data={subscriberListData} />}
 //           {/* Top Creators  */}
 //           {searchText.length === 0 && <TopCreators data={topCreators} />}
-       
 
 //           {/* Bottom Results  */}
 //           {searchText.length === 0 && (
@@ -144,7 +140,7 @@
 //         <div
 //           className={`${css.scroll} overflow-y-scroll max-h-[80vh] scroll-0`}
 //         >
-         
+
 //           <SearchResults data={results} isFetching={isFetching} />
 //         </div>
 //       )}
@@ -167,9 +163,11 @@ import {
 import { ClipLoader } from "react-spinners";
 import SubscriberList from "./SubscriberList";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const SearchCreators = () => {
   const navigate = useNavigate();
+  const { user } = useSelector((store) => store.auth);
   const [searchText, setSearchText] = useState("");
   const [debouncedSearchText, setDebouncedSearchText] = useState("");
   const [results, setResults] = useState(null);
@@ -195,7 +193,7 @@ const SearchCreators = () => {
   const getSubscriber = async () => {
     try {
       const res = await axios.get(
-        `https://backend.vinedo.app/api/user/get-subscribed-creators/${userID}`,
+        `https://backend.vinedo.app/api/user/get-subscribed-creators/${user.id}`,
         {
           headers: {
             Authorization: `Bearer ${authToken}`,

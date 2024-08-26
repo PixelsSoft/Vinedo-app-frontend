@@ -94,7 +94,6 @@ const SubscriberList = ({ searchText, data }) => {
   const res = data;
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.auth);
-
   const handleNavigate = (item) => {
     if (user?.id === item.id) {
       navigate("/profile");
@@ -124,7 +123,7 @@ const SubscriberList = ({ searchText, data }) => {
             margin: "0 15px",
           }}
         ></div>
-        <span style={{ color: "#3632ff" , fontSize:14}}>Subscriptions</span>
+        <span style={{ color: "#3632ff", fontSize: 14 }}>Subscriptions</span>
         <div
           style={{
             flex: 1,
@@ -145,7 +144,8 @@ const SubscriberList = ({ searchText, data }) => {
           display: "flex",
           overflowX: "auto",
           whiteSpace: "nowrap",
-          paddingBottom: 10,
+          justifyContent:"center",
+          padding: 8,
           WebkitOverflowScrolling: "touch", // Enables momentum scrolling on iOS
           scrollbarWidth: "none", // Hides scrollbar for Firefox
           msOverflowStyle: "none", // Hides scrollbar for IE and Edge
@@ -181,7 +181,7 @@ const SubscriberList = ({ searchText, data }) => {
                 marginBottom: 8,
                 width: 42,
                 height: 42,
-                borderRadius: "50%",
+                borderRadius: "100px",
                 overflow: "hidden",
               }}
             >
@@ -195,7 +195,7 @@ const SubscriberList = ({ searchText, data }) => {
               />
             </div>
 
-            <p style={{ color: "#ffffff", fontSize: 12 , }}>{item?.name}</p>
+            <p style={{ color: "#ffffff", fontSize: 12 }}>{item?.name}</p>
             {/* <span style={{ color: "#A1A3A7", fontSize: 10 }}>
               {item?.username}
             </span> */}
