@@ -61,9 +61,9 @@ const OnboardingSwiper = () => {
   const [isPrivacyModal, setIsPrivacyModal] = useState(false);
   const [isAdultModal, setIsAdultModal] = useState(false);
   const [isTocModal, setIsTocModal] = useState(false);
-  useEffect(() => {
-    setIsAdultModal(true);
-  }, [])
+  // useEffect(() => {
+  //   // setIsAdultModal(true);
+  // }, [])
   
 
   // User name request

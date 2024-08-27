@@ -10,7 +10,7 @@ const AdultModal = ({ isAdultModal, setAdultModal,setIsPrivacyModal,setIsTocModa
   // useClickOutside(modalRef, () => setAdultModal(false));
   const navigate = useNavigate();
   const handleAdultModal = ()=>{
-    navigate("/login");
+    navigate("/signup");
     setAdultModal(false)
   }
 
