@@ -5,6 +5,10 @@ import { useDispatch } from "react-redux";
 import { setAuth } from "../../services/slices/auth/authSlice";
 import { ClipLoader } from "react-spinners";
 import { useValidateTokenQuery } from "../../services/api/authApi/authApi";
+import { FiSearch } from "react-icons/fi";
+import { GoHome } from "react-icons/go";
+
+import UploadFromGallery from "../Profile/Modals/UploadFromGallery/UploadFromGallery";
 
 const Protected = ({ Component }) => {
   const dispatch = useDispatch();
@@ -26,14 +30,13 @@ const Protected = ({ Component }) => {
       if (!isLoading) {
         dispatch(setAuth(token?.user));
         if (!isLoading && isSuccess) {
-
-          // Check If user has set username and rate 
+          // Check If user has set username and rate
           const username = token?.user.username;
           const rate = token?.user.rate;
-          if(!username || !rate){
+          if (!username || !rate) {
             navigate("/getStarted");
             setShow(true);
-          }else{
+          } else {
             setShow(true);
           }
         } else if (!isLoading && error) {
@@ -54,7 +57,7 @@ const Protected = ({ Component }) => {
           justifyContent: "center",
           alignItems: "center",
           zIndex: "999",
-          paddingBottom:"3rem",
+          paddingBottom: "3rem",
           background:
             "linear-gradient(170.28deg, #292734 -9.44%, #000000 100%)",
         }}
@@ -64,7 +67,25 @@ const Protected = ({ Component }) => {
     );
   }
 
-  return show && <Component />;
+  return (
+    show && (
+      <>
+        {" "}
+        <Component />{" "}
+        <div className="bottom-nav">
+          <div>
+            <GoHome onClick={() => navigate("/profile")} />
+          </div>
+          <div>
+            <UploadFromGallery />{" "}
+          </div>
+          <div>
+            <FiSearch width={50} height={50} onClick={() => navigate("/search/creators")} />
+          </div>
+        </div>{" "}
+      </>
+    )
+  );
 };
 
 export default Protected;

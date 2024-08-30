@@ -102,7 +102,7 @@ const UserProfile = () => {
         <ProfileTabs data={postsData} isLoading={isLoadingPosts} />
 
         {/* Upload From Gallery  */}
-        <UploadFromGallery />
+        {/* <UploadFromGallery /> */}
 
         {/* Burger Menu Modal  */}
         <BurgerMenuModal
