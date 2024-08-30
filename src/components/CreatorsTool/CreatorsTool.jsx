@@ -95,7 +95,7 @@ const CreatorsTool = () => {
             <>
               <span>€</span>
               <p>{data?.user.balance}</p>
-              <span>K</span>
+              <span>{data?.user.balance > 0 ? "K" : ''}</span>
             </>
           )}
         </div>
