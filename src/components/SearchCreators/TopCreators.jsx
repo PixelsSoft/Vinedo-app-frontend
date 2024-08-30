@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 
 const TopCreators = ({ data }) => {
   const res = data?.users;
+
    const navigate = useNavigate();
    const { user } = useSelector((store) => store.auth);
 

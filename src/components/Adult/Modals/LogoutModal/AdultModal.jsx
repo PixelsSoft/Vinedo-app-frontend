@@ -10,7 +10,7 @@ const AdultModal = ({ isAdultModal, setAdultModal,setIsPrivacyModal,setIsTocModa
   // useClickOutside(modalRef, () => setAdultModal(false));
   const navigate = useNavigate();
   const handleAdultModal = ()=>{
-    navigate("/login");
+    navigate("/signup");
     setAdultModal(false)
   }
 
@@ -40,12 +40,12 @@ const AdultModal = ({ isAdultModal, setAdultModal,setIsPrivacyModal,setIsTocModa
                 
                 <Link 
                 onClick={async()=>{
-                  await setAdultModal(false)
+                  // await setAdultModal(false)
                  await  setIsTocModal(true)
                    }} 
                 style={{color: "#3632ff"}}> ToS</Link> &
                  <Link onClick={async()=>{
-                 await setAdultModal(false)
+                //  await setAdultModal(false)
                 await  setIsPrivacyModal(true)
                 
                   }} style={{color: "#3632ff"}}> Privacy Policy </Link>or leave the website.</p>

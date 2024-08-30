@@ -49,7 +49,10 @@ const Login = () => {
    
     if (data?.token) {
       dispatch(setAuth(data?.user));
+      localStorage.setItem("userID", data?.user?.id );
       localStorage.setItem("vineo_authToken", data?.token);
+     
+
 
       navigate("/profile");
     }

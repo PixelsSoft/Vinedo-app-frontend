@@ -21,6 +21,7 @@
     "@stripe/react-stripe-js": "^2.7.0",
     "@stripe/stripe-js": "^3.3.0",
     "@vidstack/react": "^1.11.19",
+    "axios": "^1.7.3",
     "blurhash": "^2.0.5",
     "formik": "^2.4.5",
     "framer-motion": "^11.1.0",

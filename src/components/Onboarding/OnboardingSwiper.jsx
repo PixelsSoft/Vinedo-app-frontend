@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import css from "./Onboarding.module.scss";
@@ -15,6 +15,9 @@ import {
   useStoreUserNameMutation,
 } from "../../services/api/authApi/authApi";
 import { Button } from "@nextui-org/react";
+import TocServicesModal from "../Profile/Modals/Toc/TocServicesModal";
+import PrivacyServicesModal from "../Profile/Modals/PrivacyServicesModal/PrivacyServicesModal";
+import AdultModal from "../Adult/Modals/LogoutModal/AdultModal";
 
 const variants = {
   enter: (direction) => {
@@ -55,6 +58,13 @@ const OnboardingSwiper = () => {
   const [rate, setRate] = useState("");
   const [image, setImage] = useState();
   const [imagePreview, setImagePreview] = useState();
+  const [isPrivacyModal, setIsPrivacyModal] = useState(false);
+  const [isAdultModal, setIsAdultModal] = useState(false);
+  const [isTocModal, setIsTocModal] = useState(false);
+  // useEffect(() => {
+  //   // setIsAdultModal(true);
+  // }, [])
+  
 
   // User name request
   const [storeUserName, res1] = useStoreUserNameMutation();
@@ -249,6 +259,26 @@ const OnboardingSwiper = () => {
             </Button>
           )}
         </div>
+           {/* Privacy Policy Modal  */}
+           <PrivacyServicesModal
+          isPrivacyModal={isPrivacyModal}   
+          setIsPrivacyModal={setIsPrivacyModal}
+        />
+        {/* Toc Modal  */}
+       
+        <TocServicesModal
+          isTocModal={isTocModal}
+          setIsTocModal={setIsTocModal}
+        />
+            
+         {/* Adult Modal  */}
+         <AdultModal
+         setIsTocModal={setIsTocModal}
+         setIsPrivacyModal={setIsPrivacyModal}
+          isAdultModal={isAdultModal}
+          setAdultModal={setIsAdultModal}
+        />
+    
       </div>
     </>
   );

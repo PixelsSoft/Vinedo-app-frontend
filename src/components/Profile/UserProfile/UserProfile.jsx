@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import css from "./UserProfile.module.scss";
 import { FaPlus } from "react-icons/fa";
 import ProfileTabs from "../Tabs/ProfileTabs";
@@ -35,6 +35,13 @@ const UserProfile = () => {
     refetchOnMountOrArgChange: false,
   });
 
+  useEffect(() => {
+   async ()=>{
+
+     await localStorage.setItem("data", data);
+     console.log("in profile screen",data)
+    }
+  }, [])
   const { data: postsData, isLoading: isLoadingPosts } =
     useGetAllPostsByUserQuery();
   // console.log(data)

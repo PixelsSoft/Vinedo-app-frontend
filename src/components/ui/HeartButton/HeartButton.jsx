@@ -1,6 +1,9 @@
 import React, { useMemo, useRef, useState } from "react";
 import "./HeartButton.scss";
 import { FaHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
+
+
 
 const HeartButton = ({ isLiked, handleClick, error, likes, setLikes }) => {
   const [liked, setLiked] = useState(isLiked);
@@ -53,12 +56,23 @@ const HeartButton = ({ isLiked, handleClick, error, likes, setLikes }) => {
           onClick={handleToggle}
           defaultChecked={liked}
         />
-        <label
-          htmlFor="toggle-heart"
-          style={{ color: liked ? "#3632ff" : "" }}
-        >
-          <FaHeart />
-        </label>
+        {liked ?
+           <label
+           htmlFor="toggle-heart"
+           style={{ color: "#3632ff" }}
+         >
+           <FaHeart />
+         </label>
+         :
+         <label
+         htmlFor="toggle-heart"
+         style={{ color: "#ffffff" }}
+       >
+         <FaRegHeart />
+       </label>
+        }
+     
+       
       </div>
     </>
   );

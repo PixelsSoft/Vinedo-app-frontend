@@ -5,9 +5,13 @@
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background: #110e0f;
+  background: #000000;
+  // background: #110e0f;
 
   .header {
+    background-color: rgba(0, 0, 0, 0.5); 
+    width: 100%;
+    
     position: absolute;
     top: 0;
     left: 0;
@@ -102,8 +106,12 @@
 
   // Bottom Post Action
   .bottomActionsWrap {
-    position: fixed;
-    top: 84%;
+    // position: fixed;
+    background-color: rgba(0, 0, 0, 0.5); 
+    width: 100%;
+    position: absolute;
+    bottom: 0%;
+    // top: 90%;
     left: 0;
     right: 0;
     display: flex;
@@ -141,13 +149,16 @@
         flex-direction: column;
         align-items: center;
         gap: 6px;
+        color: #ffffff;
+        
 
         span {
           font-size: 12px;
           font-weight: 400;
           line-height: 18px;
           letter-spacing: -0.3px;
-          color: #bdc5cd;
+          // color: #bdc5cd;
+          color: #ffffff;
         }
       }
     }

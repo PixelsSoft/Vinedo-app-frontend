@@ -171,7 +171,11 @@ const SignupHome = () => {
 
               <div className={css.buttons}>
                 <button
-                  onClick={() => navigate("/signup")}
+                  onClick={() => 
+                    // navigate("/signup")
+                    setIsAdultModal(true)
+
+                  }
                   className={css.firstBtn}
                 >
                   Sign up with email
@@ -180,7 +184,8 @@ const SignupHome = () => {
                   Existing account?
                   <Link
                     onClick={() => {
-                      setIsAdultModal(true);
+                    navigate("/login")
+
                     }}
                   >
                     {" "}

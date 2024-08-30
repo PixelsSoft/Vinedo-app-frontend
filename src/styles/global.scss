@@ -10,7 +10,7 @@ input.amunt0-field {
   background: #303030;
   border-radius: 99px;
   text-align: center;
-  height: auto;
+  // height: auto;
 }
 * {
   margin: 0;
@@ -31,6 +31,7 @@ body {
 
 
 .App {
+  // min-width: 1000px;
   width: 100%;
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
