@@ -132,20 +132,27 @@ const SubscriberList = ({ searchText, data }) => {
           }}
         ></div>
       </div>
-      {res?.length === 0 && (
+      {res?.length === 0 ? (
         <div style={{ width: "100%", textAlign: "center" }}>
           <p style={{ color: "white", fontSize: 12 }}>
             You haven't subscribed to anyone yet
           </p>
         </div>
-      )}
+      ):
+      <div style={{paddingTop:8}}>
+
+      </div>
+      }
       <div
         style={{
           display: "flex",
           overflowX: "auto",
           whiteSpace: "nowrap",
           justifyContent:"center",
-          padding: 8,
+          paddingBottom: 8,
+          paddingRight:8,
+          paddingLeft:8,
+     
           WebkitOverflowScrolling: "touch", // Enables momentum scrolling on iOS
           scrollbarWidth: "none", // Hides scrollbar for Firefox
           msOverflowStyle: "none", // Hides scrollbar for IE and Edge
