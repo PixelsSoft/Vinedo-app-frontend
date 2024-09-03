@@ -172,6 +172,7 @@ body.no-screenshot::before {
   height: 50px;
   bottom: 0px;
   background-color: black;
+  z-index: 9999;
 
   @media (min-width: $md) {
     max-width: 24rem;

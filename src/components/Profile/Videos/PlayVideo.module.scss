@@ -10,7 +10,7 @@
   scrollbar-width: 0;
 
   .header {
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
     position: absolute;
     top: 0;
@@ -83,22 +83,21 @@
     overflow: hidden;
     @include flexCenter;
     background: #000000;
+
     img {
       display: block;
       width: 100%;
     }
 
-    :where(
-        video:not([width]):not([height]),
-        iframe:not([width]):not([height])
-      ) {
+    :where(video:not([width]):not([height]),
+      iframe:not([width]):not([height])) {
       aspect-ratio: auto;
     }
   }
 
   // Bottom Post Action
   .bottomActionsWrap {
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.808);
     width: 100%;
     // position: fixed;
     position: absolute;
@@ -117,6 +116,7 @@
     gap: 0.3rem;
     max-width: 24rem;
     margin-top: 5px;
+    margin-bottom: 3rem;
 
     .line {
       height: 0.4px;

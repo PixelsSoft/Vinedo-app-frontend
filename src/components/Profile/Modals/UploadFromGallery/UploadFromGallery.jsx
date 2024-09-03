@@ -24,7 +24,7 @@ const UploadFromGallery = () => {
   //       dispatch(setPostFile({ type: "image", file: files }));
   //     } else if (files.type.startsWith("video")) {
 
-  //       // First Check size of the file to be less than 50 mb 
+  //       // First Check size of the file to be less than 50 mb
   //        if (files.size <= 50 * 1024 * 1024) {
   //          // Create a URL for the selected video file
 
@@ -74,7 +74,7 @@ const UploadFromGallery = () => {
     const firstFile = files[0];
 
     console.log("first file", firstFile);
-    console.log("files",files);
+    console.log("files", files);
 
     if (firstFile.type.startsWith("image")) {
       // Process only images
@@ -112,13 +112,12 @@ const UploadFromGallery = () => {
     }
   };
 
-
   useEffect(() => {
     if (file && isOpen) {
       navigate("/postPreview");
+      useClickOutside(modalRef, () => setIsOpen(false));
     }
   }, [file, isOpen, navigate]);
-
   useClickOutside(modalRef, () => setIsOpen(false));
 
   return (

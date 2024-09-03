@@ -44,7 +44,7 @@ const EnterName = ({
 
   const userNameSchema = Yup.object({
     userName: Yup.string()
-      .min(4, "Username must be at least 3 characters")
+      .min(3, "Username must be at least 3 characters")
       .max(255, "Maximun characters are 255")
       .matches(
         /^[a-zA-Z0-9_.]+$/,

@@ -80,7 +80,11 @@ const Protected = ({ Component }) => {
             <UploadFromGallery />{" "}
           </div>
           <div>
-            <FiSearch width={50} height={50} onClick={() => navigate("/search/creators")} />
+            <FiSearch
+              width={50}
+              height={50}
+              onClick={() => navigate("/search/creators")}
+            />
           </div>
         </div>{" "}
       </>

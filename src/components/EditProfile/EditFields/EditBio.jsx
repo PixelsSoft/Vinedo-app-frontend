@@ -4,7 +4,9 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Input } from "@nextui-org/react";
 import { useApiErrorHandling } from "../../../hooks/useApiErrors";
-import { useStoreBioMutation, useStoreUserNameMutation } from "../../../services/api/authApi/authApi";
+import {
+  useStoreBioMutation,
+} from "../../../services/api/authApi/authApi";
 import { toastSuccess } from "../../Toast/Toast";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -14,49 +16,44 @@ const EditBio = () => {
   const navigate = useNavigate();
   const { value } = useParams();
   const maxLength = 150;
-  const [userName, setUserName] = useState(value);
-  const [updatedBio,setBio] = useState('')
 
-   const initialValues = {
-     userName: value,
-   };
+  const initialValues = {
+    bio: value || "",
+  };
 
-  const [storeUserName, res] = useStoreBioMutation();
+  const [storeBio, res] = useStoreBioMutation();
   const { isLoading, error, isSuccess } = res;
 
-  useMemo(()=>{
-    if(isSuccess){
+  useMemo(() => {
+    if (isSuccess) {
       toastSuccess("Changes saved");
-      navigate(`/edit/username/${userName}`,{replace: true});
+      navigate(`/edit/username/${initialValues.bio}`, { replace: true });
     }
-  },[isSuccess]);
+  }, [isSuccess]);
 
   const apiErrors = useApiErrorHandling(error);
 
-  const handleChange = (e,setFieldValue) => {
-    localStorage.removeItem('bio')
+  const handleChange = (e, setFieldValue) => {
+    localStorage.removeItem("bio");
     const { value, name } = e.target;
     if (value.length <= maxLength) {
-      setUserName(value);
       setFieldValue(name, value);
     }
   };
 
-  const handleSubmit = async () => {
-    //  await storeUserName({ username: userName });
-    localStorage.setItem("bio",JSON.stringify(userName))
+  const handleSubmit = async (values) => {
+    console.log('dfgdfgfdgdgd');
+    
+    await storeBio({ bio: values.bio });
+    localStorage.setItem("bio", JSON.stringify(values.bio));
   };
-const updatedbio = localStorage.getItem("bio") || userName
-   const userNameSchema = Yup.object({
-     userName: Yup.string()
-       .min(4, "Username must be at least 3 characters")
-       .max(255, "Maximun characters are 255")
-       .matches(
-         /^[a-zA-Z0-9_.]+$/,
-         "Only letters, numbers, underscores, or periods are allowed"
-       )
-       .required("Username is Required"),
-   });
+
+  const bioSchema = Yup.object({
+    bio: Yup.string()
+      .min(3, "Bio must be at least 3 characters")
+      .max(255, "Maximum characters are 255")
+      .required("Bio is Required"),
+  });
 
   return (
     <div className={css.wrapper}>
@@ -67,7 +64,7 @@ const updatedbio = localStorage.getItem("bio") || userName
 
       <Formik
         initialValues={initialValues}
-        validationSchema={userNameSchema}
+        validationSchema={bioSchema}
         onSubmit={handleSubmit}
       >
         {({ errors, setFieldValue, touched, values }) => (
@@ -78,8 +75,8 @@ const updatedbio = localStorage.getItem("bio") || userName
                   type="text"
                   label="Bio"
                   radius="full"
-                  name="userName"
-                  value={ updatedbio}
+                  name="bio"
+                  value={values.bio}
                   size="lg"
                   autoComplete="off"
                   classNames={{
@@ -103,28 +100,27 @@ const updatedbio = localStorage.getItem("bio") || userName
                       "text-white",
                       "group[data-has-value=true] group-data-[has-value=true]:text-white",
                       "!cursor-text",
-                      errors.userName &&
-                        touched.userName &&
+                      errors.bio &&
+                        touched.bio &&
                         "border border-[#FF2D1B]",
                     ],
                   }}
                   endContent={
                     <div className="pointer-events-none flex items-center">
-                      <span className="text-[#A1A3A7] text-tiny">{`${userName.length}/${maxLength}`}</span>
+                      <span className="text-[#A1A3A7] text-tiny">{`${values.bio.length}/${maxLength}`}</span>
                     </div>
                   }
                   onChange={(e) => handleChange(e, setFieldValue)}
                 />
-                {errors.userName && touched.userName && (
+                {errors.bio && touched.bio && (
                   <div className="error space-x-1 text-[10px] mt-2 flex justify-end text-[#FF0000]">
                     <IoWarningOutline fontSize={14} />
-                    <span>{errors.userName}</span>
+                    <span>{errors.bio}</span>
                   </div>
                 )}
                 <div className={css.note}>
                   Bio can contain only letters, numbers, underscores, and
-                  periods. Changing you Bio will also change your profile
-                  link.
+                  periods. Changing your Bio will also change your profile link.
                 </div>
               </div>
             </div>

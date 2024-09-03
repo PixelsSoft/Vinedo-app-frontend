@@ -62,9 +62,8 @@ const OnboardingSwiper = () => {
   const [isAdultModal, setIsAdultModal] = useState(false);
   const [isTocModal, setIsTocModal] = useState(false);
   // useEffect(() => {
-  //   // setIsAdultModal(true);
+  //   setIsAdultModal(true);
   // }, [])
-  
 
   // User name request
   const [storeUserName, res1] = useStoreUserNameMutation();
@@ -133,7 +132,10 @@ const OnboardingSwiper = () => {
   const dataIndex = wrap(0, renderData.length, page);
 
   const handlePaginate = () => {};
-
+  const handleModalClose = (e) => {
+    setIsAdultModal(false);
+    rateRef && rateRef.current.click();
+  };
   return (
     <>
       <div className="w-screen h-screen md:max-w-sm overflow-hidden flex justify-center items-center flex-col md:mx-auto">
@@ -251,34 +253,35 @@ const OnboardingSwiper = () => {
           {page === 3 && (
             <Button
               isLoading={isLoadingRate}
-              onClick={() => rateRef && rateRef.current.click()}
+              onClick={() => {
+                setIsAdultModal(true);
+              }}
               className={css.getStartedBtn}
               type="button"
             >
-              Finsih
+              Finish
             </Button>
           )}
         </div>
-           {/* Privacy Policy Modal  */}
-           <PrivacyServicesModal
-          isPrivacyModal={isPrivacyModal}   
+        {/* Privacy Policy Modal  */}
+        <PrivacyServicesModal
+          isPrivacyModal={isPrivacyModal}
           setIsPrivacyModal={setIsPrivacyModal}
         />
         {/* Toc Modal  */}
-       
+
         <TocServicesModal
           isTocModal={isTocModal}
           setIsTocModal={setIsTocModal}
         />
-            
-         {/* Adult Modal  */}
-         <AdultModal
-         setIsTocModal={setIsTocModal}
-         setIsPrivacyModal={setIsPrivacyModal}
+
+        {/* Adult Modal  */}
+        <AdultModal
+          setIsTocModal={setIsTocModal}
+          setIsPrivacyModal={setIsPrivacyModal}
           isAdultModal={isAdultModal}
-          setAdultModal={setIsAdultModal}
+          setAdultModal={(e) => handleModalClose(e)}
         />
-    
       </div>
     </>
   );

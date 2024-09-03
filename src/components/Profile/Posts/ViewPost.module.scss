@@ -83,6 +83,7 @@
     align-items: center;
     position: relative;
 
+
     img {
       display: block;
       width: 100%;
@@ -107,7 +108,7 @@
   // Bottom Post Action
   .bottomActionsWrap {
     // position: fixed;
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.788); 
     width: 100%;
     position: absolute;
     bottom: 0%;
@@ -124,6 +125,7 @@
     gap: 0.3rem;
     max-width: 24rem;
     z-index: 99;
+    margin-bottom: 3rem;
 
     // .line {
     //   height: 0.6px;

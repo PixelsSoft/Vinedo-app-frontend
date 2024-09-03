@@ -16,23 +16,23 @@ const EditUserName = () => {
   const maxLength = 30;
   const [userName, setUserName] = useState(value);
 
-   const initialValues = {
-     userName: value,
-   };
+  const initialValues = {
+    userName: value,
+  };
 
   const [storeUserName, res] = useStoreUserNameMutation();
   const { isLoading, error, isSuccess } = res;
 
-  useMemo(()=>{
-    if(isSuccess){
+  useMemo(() => {
+    if (isSuccess) {
       toastSuccess("Changes saved");
-      navigate(`/edit/username/${userName}`,{replace: true});
+      navigate(`/edit/username/${userName}`, { replace: true });
     }
-  },[isSuccess]);
+  }, [isSuccess]);
 
   const apiErrors = useApiErrorHandling(error);
 
-  const handleChange = (e,setFieldValue) => {
+  const handleChange = (e, setFieldValue) => {
     const { value, name } = e.target;
     if (value.length <= maxLength) {
       setUserName(value);
@@ -41,19 +41,19 @@ const EditUserName = () => {
   };
 
   const handleSubmit = async () => {
-     await storeUserName({ username: userName });
+    await storeUserName({ username: userName });
   };
 
-   const userNameSchema = Yup.object({
-     userName: Yup.string()
-       .min(4, "Username must be at least 3 characters")
-       .max(255, "Maximun characters are 255")
-       .matches(
-         /^[a-zA-Z0-9_.]+$/,
-         "Only letters, numbers, underscores, or periods are allowed"
-       )
-       .required("Username is Required"),
-   });
+  const userNameSchema = Yup.object({
+    userName: Yup.string()
+      .min(3, "Username must be at least 3 characters")
+      .max(255, "Maximun characters are 255")
+      .matches(
+        /^[a-zA-Z0-9_.]+$/,
+        "Only letters, numbers, underscores, or periods are allowed"
+      )
+      .required("Username is Required"),
+  });
 
   return (
     <div className={css.wrapper}>
