@@ -46,7 +46,7 @@ const EditName = () => {
 
   const nameSchema = Yup.object({
     name: Yup.string()
-      .min(4, "Name must be at least 3 characters")
+      .min(3, "Name must be at least 3 characters")
       .max(255, "Maximun characters are 255")
       .required("Name is Required"),
   });

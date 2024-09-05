@@ -35,7 +35,7 @@ const CoverPhoto = ({ data, isLoading, setIsBurgerMenu }) => {
             />
           </div>
           <div className={css.right}>
-            <FiSearch onClick={() => navigate("/search/creators")} />
+            {/* <FiSearch onClick={() => navigate("/search/creators")} /> */}
             <FaBars onClick={() => setIsBurgerMenu(true)} />
           </div>
         </div>

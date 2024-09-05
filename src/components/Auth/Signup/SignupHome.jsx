@@ -172,8 +172,8 @@ const SignupHome = () => {
               <div className={css.buttons}>
                 <button
                   onClick={() => 
-                    // navigate("/signup")
-                    setIsAdultModal(true)
+                    navigate("/signup")
+                    // setIsAdultModal(true)
 
                   }
                   className={css.firstBtn}

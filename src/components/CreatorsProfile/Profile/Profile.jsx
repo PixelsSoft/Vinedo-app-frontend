@@ -42,6 +42,7 @@ const CreatorProfile = () => {
           data={data}
           isLoading={isLoading}
           setIsBurgerMenu={setIsBurgerMenu}
+          isBurgerMenu={isBurgerMenu}
         />
 
         {/* Profile pic  */}

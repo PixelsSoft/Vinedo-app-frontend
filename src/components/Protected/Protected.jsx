@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setAuth } from "../../services/slices/auth/authSlice";
 import { ClipLoader } from "react-spinners";
@@ -11,6 +11,8 @@ import { GoHome } from "react-icons/go";
 import UploadFromGallery from "../Profile/Modals/UploadFromGallery/UploadFromGallery";
 
 const Protected = ({ Component }) => {
+  const location = useLocation();
+  const showBottomNav = !location.pathname.includes("getStarted");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [show, setShow] = useState(null);
@@ -72,21 +74,25 @@ const Protected = ({ Component }) => {
       <>
         {" "}
         <Component />{" "}
-        <div className="bottom-nav">
-          <div>
-            <GoHome onClick={() => navigate("/profile")} />
+        {showBottomNav && (
+          <div className="min-w-[400px] flex justify-center bg-black">
+            <div className="bottom-nav min-w-[25rem]">
+              <div>
+                <GoHome onClick={() => navigate("/profile")} />
+              </div>
+              <div>
+                <UploadFromGallery />{" "}
+              </div>
+              <div>
+                <FiSearch
+                  width={50}
+                  height={50}
+                  onClick={() => navigate("/search/creators")}
+                />
+              </div>
+            </div>
           </div>
-          <div>
-            <UploadFromGallery />{" "}
-          </div>
-          <div>
-            <FiSearch
-              width={50}
-              height={50}
-              onClick={() => navigate("/search/creators")}
-            />
-          </div>
-        </div>{" "}
+        )}
       </>
     )
   );

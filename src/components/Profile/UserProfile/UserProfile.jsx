@@ -46,13 +46,14 @@ const UserProfile = () => {
     useGetAllPostsByUserQuery();
   // console.log(data)
   return (
-    <div className="w-screen min-h-screen bg-[#110e0f] md:max-w-sm overflow-x-hidden scrollbar-hide flex items-center flex-col md:mx-auto">
+    <div className="w-full min-h-screen bg-[#110e0f] md:max-w-sm overflow-x-hidden scrollbar-hide flex items-center flex-col md:mx-auto ">
       <div className={css.container}>
         {/* Cover photo  */}
         <CoverPhoto
           data={data}
           isLoading={isLoading}
           setIsBurgerMenu={setIsBurgerMenu}
+          isBurgerMenu={isBurgerMenu}
         />
 
         {/* Profile pic  */}

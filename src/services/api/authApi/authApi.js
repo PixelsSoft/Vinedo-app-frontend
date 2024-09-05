@@ -73,7 +73,7 @@ export const authApi = createApi({
     }),
     storeBio: builder.mutation({
       query: (data) => ({
-        url: "user/bio",
+        url: "user/description",
         method: "POST",
         body: data,
       }),

@@ -104,7 +104,7 @@ const SubscriberList = ({ searchText, data }) => {
 
   return (
     <div
-      className={`${css.wrapper} md:max-w-sm md:mx-auto`}
+      className={`${css.wrapper} md:max-w-sm md:mx-auto  `}
       style={{ width: "100vw" }}
     >
       <div

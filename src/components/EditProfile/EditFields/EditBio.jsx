@@ -4,10 +4,8 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Input } from "@nextui-org/react";
 import { useApiErrorHandling } from "../../../hooks/useApiErrors";
-import {
-  useStoreBioMutation,
-} from "../../../services/api/authApi/authApi";
-import { toastSuccess } from "../../Toast/Toast";
+import { useStoreBioMutation } from "../../../services/api/authApi/authApi";
+import { toastError, toastSuccess } from "../../Toast/Toast";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { IoWarningOutline } from "react-icons/io5";
@@ -16,7 +14,7 @@ const EditBio = () => {
   const navigate = useNavigate();
   const { value } = useParams();
   const maxLength = 150;
-
+  const [tempBio, settempBio] = useState("");
   const initialValues = {
     bio: value || "",
   };
@@ -26,25 +24,28 @@ const EditBio = () => {
 
   useMemo(() => {
     if (isSuccess) {
+      console.log("fdsfsdfsdfds", isSuccess);
+
       toastSuccess("Changes saved");
-      navigate(`/edit/username/${initialValues.bio}`, { replace: true });
+      navigate(`/edit/bio/${tempBio}`, { replace: true });
+    } else if (error) {
+      toastError("cannot save changes");
     }
-  }, [isSuccess]);
+  }, [isSuccess, error]);
 
   const apiErrors = useApiErrorHandling(error);
 
   const handleChange = (e, setFieldValue) => {
     localStorage.removeItem("bio");
     const { value, name } = e.target;
+    settempBio(value);
     if (value.length <= maxLength) {
       setFieldValue(name, value);
     }
   };
 
   const handleSubmit = async (values) => {
-    console.log('dfgdfgfdgdgd');
-    
-    await storeBio({ bio: values.bio });
+    await storeBio({ description: values.bio });
     localStorage.setItem("bio", JSON.stringify(values.bio));
   };
 
@@ -58,8 +59,10 @@ const EditBio = () => {
   return (
     <div className={css.wrapper}>
       <header>
-        <IoIosArrowBack onClick={() => navigate(-1)} />
-        <p>Bio</p>
+        <div className={css.backButton}>
+          <IoIosArrowBack onClick={() => navigate(-1)} />
+        </div>
+        <p>bio</p>
       </header>
 
       <Formik
@@ -100,9 +103,7 @@ const EditBio = () => {
                       "text-white",
                       "group[data-has-value=true] group-data-[has-value=true]:text-white",
                       "!cursor-text",
-                      errors.bio &&
-                        touched.bio &&
-                        "border border-[#FF2D1B]",
+                      errors.bio && touched.bio && "border border-[#FF2D1B]",
                     ],
                   }}
                   endContent={
@@ -118,10 +119,10 @@ const EditBio = () => {
                     <span>{errors.bio}</span>
                   </div>
                 )}
-                <div className={css.note}>
+                {/* <div className={css.note}>
                   Bio can contain only letters, numbers, underscores, and
                   periods. Changing your Bio will also change your profile link.
-                </div>
+                </div> */}
               </div>
             </div>
 
