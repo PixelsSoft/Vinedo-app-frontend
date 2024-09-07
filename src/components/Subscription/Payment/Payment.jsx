@@ -132,7 +132,7 @@ import { ClipLoader } from "react-spinners";
 import { useGetPaymentIntentQuery } from "../../../services/api/creatorsApi/creatorsApi";
 import { IoIosArrowBack } from "react-icons/io";
 import useBrowserFocus from "../../../useBrowserVisibility";
-
+import TopBackNavigation from "../../ui/TopBackNavigation/TopBackNavigation";
 
 const appearance = {
   theme: "night",
@@ -222,12 +222,15 @@ const Payment = () => {
 
       <div className="w-screen h-screen md:max-w-sm overflow-x-hidden scrollbar-hide flex justify-center items-center flex-col md:mx-auto">
         <div className={css.wrapper}>
-          <header>
-            <IoIosArrowBack onClick={() => navigate(-1)} />
-            <p>Make Payment</p>
-          </header>
+          <TopBackNavigation
+            heading="Make Payment"
+            onBack={() => navigate(-1)}
+          />
           {stripePromise && clientSecret && (
-            <Elements stripe={stripePromise} options={{ clientSecret, appearance }}>
+            <Elements
+              stripe={stripePromise}
+              options={{ clientSecret, appearance }}
+            >
               <CheckoutForm
                 clientSecret={clientSecret}
                 isLoading={isLoading}

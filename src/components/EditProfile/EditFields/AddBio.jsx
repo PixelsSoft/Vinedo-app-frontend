@@ -5,41 +5,39 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button, Input } from "@nextui-org/react";
 import { useApiErrorHandling } from "../../../hooks/useApiErrors";
 import { useStoreUserBioMutation } from "../../../services/api/profileApi/profileApi";
+import TopBackNavigation from "../../ui/TopBackNavigation/TopBackNavigation";
 
 const AddBio = () => {
-     const navigate = useNavigate();
-     const maxLength = 255;
-     const [bio, setBio] = useState("");
+  const navigate = useNavigate();
+  const maxLength = 255;
+  const [bio, setBio] = useState("");
 
-     const [storeBio, res] = useStoreUserBioMutation();
-     const { isLoading, error, isSuccess } = res;
+  const [storeBio, res] = useStoreUserBioMutation();
+  const { isLoading, error, isSuccess } = res;
 
-     useMemo(() => {
-       if (isSuccess) {
-        //  toastSuccess("Changes saved");
-         navigate(`/profile`, { replace: true });
-       }
-     }, [isSuccess]);
+  useMemo(() => {
+    if (isSuccess) {
+      //  toastSuccess("Changes saved");
+      navigate(`/profile`, { replace: true });
+    }
+  }, [isSuccess]);
 
-     const apiErrors = useApiErrorHandling(error);
+  const apiErrors = useApiErrorHandling(error);
 
-     const handleChange = (e) => {
-       const { value, name } = e.target;
-       if (value.length <= maxLength) {
-         setBio(value);
-       }
-     };
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    if (value.length <= maxLength) {
+      setBio(value);
+    }
+  };
 
-     const handleSubmit = async () => {
-       await storeBio({ description: bio });
-     };
+  const handleSubmit = async () => {
+    await storeBio({ description: bio });
+  };
 
   return (
     <div className={css.wrapper}>
-      <header>
-        <IoIosArrowBack onClick={() => navigate(-1)} />
-        <p>Add Bio</p>
-      </header>
+      <TopBackNavigation heading="Add Bio" onBack={() => navigate(-1)} />
 
       <div className={css.field}>
         <div className={css.inputContainer}>

@@ -9,6 +9,7 @@ import { useApiErrorHandling } from "../../../hooks/useApiErrors";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { IoWarningOutline } from "react-icons/io5";
+import TopBackNavigation from "../../ui/TopBackNavigation/TopBackNavigation";
 
 const EditName = () => {
   const navigate = useNavigate();
@@ -53,10 +54,8 @@ const EditName = () => {
 
   return (
     <div className={css.wrapper}>
-      <header>
-        <IoIosArrowBack onClick={() => navigate(-1)} />
-        <p>Name</p>
-      </header>
+      <TopBackNavigation heading="Name" onBack={() => navigate(-1)} />
+   
 
       <Formik
         initialValues={initialValues}

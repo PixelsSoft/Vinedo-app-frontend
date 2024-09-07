@@ -9,6 +9,7 @@ import { useStoreRateMutation } from "../../../services/api/authApi/authApi";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { IoWarningOutline } from "react-icons/io5";
+import TopBackNavigation from "../../ui/TopBackNavigation/TopBackNavigation";
 
 const EditPrice = () => {
   const navigate = useNavigate();
@@ -47,10 +48,8 @@ const EditPrice = () => {
 
   return (
     <div className={css.wrapper}>
-      <header style={{ maxWidth: "69%" }}>
-        <IoIosArrowBack onClick={() => navigate(-1)} />
-        <p>Set Your Price</p>
-      </header>
+     
+     <TopBackNavigation heading="Set Your Price" onBack={() => navigate(-1)} />
 
       <Formik
         initialValues={initialValues}

@@ -9,6 +9,7 @@ import { toastSuccess } from "../../Toast/Toast";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { IoWarningOutline } from "react-icons/io5";
+import TopBackNavigation from "../../ui/TopBackNavigation/TopBackNavigation";
 
 const EditUserName = () => {
   const navigate = useNavigate();
@@ -57,10 +58,8 @@ const EditUserName = () => {
 
   return (
     <div className={css.wrapper}>
-      <header>
-        <IoIosArrowBack onClick={() => navigate(-1)} />
-        <p>Username</p>
-      </header>
+      <TopBackNavigation heading="Username" onBack={() => navigate(-1)} />
+  
 
       <Formik
         initialValues={initialValues}

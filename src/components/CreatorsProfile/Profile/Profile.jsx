@@ -35,7 +35,7 @@ const CreatorProfile = () => {
 
 
   return (
-    <div className="w-screen bg-[#110e0f] min-h-screen md:max-w-sm overflow-x-hidden scrollbar-hide flex items-center flex-col md:mx-auto">
+    <div className="w-full bg-[#110e0f] min-h-screen md:max-w-sm overflow-x-hidden scrollbar-hide flex items-center flex-col md:mx-auto">
       <div className={css.container}>
         {/* Cover photo  */}
         <CoverPhoto

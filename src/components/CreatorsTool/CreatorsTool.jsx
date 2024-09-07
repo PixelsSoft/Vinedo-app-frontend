@@ -14,6 +14,7 @@ import { AiFillEdit } from "react-icons/ai";
 import { Skeleton } from "@nextui-org/react";
 import { toastError } from "../Toast/Toast";
 import { useGetAllPostsByUserQuery } from "../../services/api/postApi/postApi";
+import TopBackNavigation from "../ui/TopBackNavigation/TopBackNavigation";
 // import { useConnectStripeMutation } from "../../services/api/StripeApi/StripeApi";
 
 const CreatorsTool = () => {
@@ -81,11 +82,9 @@ const CreatorsTool = () => {
         withdraw={true}
         userId={data?.user?.id}
       />
-      <header>
-        <IoIosArrowBack onClick={() => navigate(-1)} />
-        <p>Creator’s tool</p>
-      </header>
-
+      <TopBackNavigation heading="Creator’s tool" onBack={() => navigate(-1)} />
+   
+      
       <div className={css.card}>
         <p>Balance</p>
         <div className={css.amount} style={{ height: "30px" }}>
