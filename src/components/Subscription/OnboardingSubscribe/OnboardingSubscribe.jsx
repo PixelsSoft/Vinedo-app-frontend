@@ -62,7 +62,7 @@ const OnboardingSubscribe = () => {
           </div>
 
           <div className={css.subscribeContent}>
-            <p>By unsubscribing you won’t </p>
+            {/* <p>By unsubscribing you won’t </p> */}
             <ul>
               <li>
                 <div className={css.icon}>

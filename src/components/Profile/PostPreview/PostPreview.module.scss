@@ -11,7 +11,7 @@
   header {
     width: 100%;
     max-width: 70%;
-    padding:2rem 1.3rem;
+    padding: 2rem 1.3rem;
     padding-top: 1.5rem;
     display: flex;
     align-items: center;
@@ -109,6 +109,7 @@
   .imageCard {
     margin: 1rem auto;
     width: 92%;
+    height: 50vh;
     max-height: 410px;
     border-radius: 8px;
     @include flexCenter;
@@ -145,7 +146,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 3.4rem;
+    bottom: 10vh;
 
     button {
       width: 100%;

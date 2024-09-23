@@ -224,3 +224,23 @@
 .e-tab .e-tab-header:not(.e-vertical) .e-indicator, .e-tab .e-tab-header.e-vertical .e-indicator {
     transition: none;
 }
+
+.copyToClipboard{
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  color: #A1A3A7;
+  gap: 9px;
+  margin: 1rem auto;
+  padding-right: 5px;
+
+  svg{
+      font-size: 17px;
+      color: #A1A3A7;
+      cursor: pointer;
+  }
+}

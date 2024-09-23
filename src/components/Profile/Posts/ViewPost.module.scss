@@ -6,12 +6,15 @@
   overflow: hidden;
   position: relative;
   background: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   // background: #110e0f;
 
   .header {
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
-    
+
     position: absolute;
     top: 0;
     left: 0;
@@ -100,18 +103,18 @@
       position: absolute;
       top: 20%;
       left: 95%;
-      transform: translate(-100%,-50%);
-     z-index: 99;
+      transform: translate(-100%, -50%);
+      z-index: 99;
     }
   }
 
   // Bottom Post Action
   .bottomActionsWrap {
     // position: fixed;
-    background-color: rgba(0, 0, 0, 0.788); 
+    background-color: rgba(0, 0, 0, 0.900);
     width: 100%;
-    position: absolute;
-    bottom: 0%;
+    position: fixed !important;
+    bottom: 50px;
     // top: 90%;
     left: 0;
     right: 0;
@@ -120,12 +123,12 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 95%;
+    max-width: 100%;
     margin: auto;
     gap: 0.3rem;
-    max-width: 24rem;
+    max-width: 100%;
     z-index: 99;
-    margin-bottom: 3rem;
+    // margin-bottom: 18vh;
 
     // .line {
     //   height: 0.6px;
@@ -141,7 +144,7 @@
       margin-top: 1rem;
       cursor: pointer;
       max-width: 99%;
-      position: relative;
+
 
       .item {
         flex: 1;
@@ -152,7 +155,7 @@
         align-items: center;
         gap: 6px;
         color: #ffffff;
-        
+
 
         span {
           font-size: 12px;

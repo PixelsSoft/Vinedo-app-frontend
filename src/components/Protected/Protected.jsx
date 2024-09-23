@@ -75,18 +75,19 @@ const Protected = ({ Component }) => {
         {" "}
         <Component />{" "}
         {showBottomNav && (
-          <div className="min-w-[400px] flex justify-center bg-black">
-            <div className="bottom-nav min-w-[25rem]">
+          <div className=" flex justify-center bg-black">
+            <div className="bottom-nav ">
               <div>
-                <GoHome onClick={() => navigate("/profile")} />
+                <GoHome onClick={() => navigate("/profile")}   className="w-[25px] h-[25px]" />
               </div>
               <div>
                 <UploadFromGallery />{" "}
               </div>
               <div>
                 <FiSearch
-                  width={50}
-                  height={50}
+                className="w-[25px] h-[25px]"
+                  width={100}
+                  height={100}
                   onClick={() => navigate("/search/creators")}
                 />
               </div>

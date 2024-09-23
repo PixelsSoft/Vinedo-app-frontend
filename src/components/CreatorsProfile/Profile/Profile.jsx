@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import css from "./Profile.module.scss";
 import { FaPlus } from "react-icons/fa";
 import ProfileTabs from "../Tabs/ProfileTabs";
@@ -14,6 +14,7 @@ import LogoutModal from "../../Profile/Modals/LogoutModal/LogoutModal";
 import ConfirmModal from "../../CreatorsTool/ConfirmModal";
 import DeleteAccountModal from "../../Profile/Modals/DeleteAccountModal/DeleteAccountModal";
 import UnsubscribeModal from "../../Profile/Modals/UnsubscribeModal/UnsubscribeModal";
+import { useGetLinksQuery } from "../../../services/api/profileApi/profileApi";
 
 const CreatorProfile = () => {
   const navigate = useNavigate();
@@ -24,110 +25,144 @@ const CreatorProfile = () => {
   const [isConfirmModal, setIsConfirmModal] = useState();
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [isUnsubModal, setIsUnsubModal] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
+  // Fetch creator profile data
   const {
-    data,
+    data: creatorProfileData, // Renamed this to avoid conflicts
     isFetching: isLoading,
     error,
   } = useGetCreatorProfileQuery(username);
-  
-  
 
+  // Fetch links list
+  const { data: linksData } = useGetLinksQuery(creatorProfileData?.user?.id, {
+    skip: !creatorProfileData?.user?.id, // Fetch only when the ID is available
+    refetchOnMountOrArgChange: false,
+  });
+
+  const [linksList, setLinksList] = useState([]);
+
+  useEffect(() => {
+    if (linksData?.data) {
+      setLinksList(linksData.data);
+    }
+  }, [linksData]);
+
+  console.log('Creator Profile:', creatorProfileData);
+  console.log('Links List:', linksList);
 
   return (
     <div className="w-full bg-[#110e0f] min-h-screen md:max-w-sm overflow-x-hidden scrollbar-hide flex items-center flex-col md:mx-auto">
       <div className={css.container}>
-        {/* Cover photo  */}
+        {/* Cover photo */}
         <CoverPhoto
-          data={data}
+          data={creatorProfileData}
           isLoading={isLoading}
           setIsBurgerMenu={setIsBurgerMenu}
           isBurgerMenu={isBurgerMenu}
         />
 
-        {/* Profile pic  */}
-        <ProfilePicture data={data} isLoading={isLoading} />
+        {/* Profile pic */}
+        <ProfilePicture data={creatorProfileData} isLoading={isLoading} />
 
-        {/* Loading Content Loader  */}
+        {/* Loading Content Loader */}
         {isLoading && (
           <div className="w-full h-[48px] mt-6 flex items-center justify-center">
             <ClipLoader color="#3632FF" size={30} speedMultiplier={0.95} />
           </div>
         )}
 
-        {/* Likes | Subscribers | Rating  */}
+        {/* Likes | Subscribers | Rating */}
         <div className={css.likes}>
           <div className={css.item}>
-            <p>{data?.likes}</p>
-            <span>{data && "Likes"}</span>
+            <p>{creatorProfileData?.likes}</p>
+            <span>{creatorProfileData && "Likes"}</span>
           </div>
           <div className={css.item}>
-            <p>{data?.followers}</p>
-            <span>{data && "Subscribers"}</span>
+            <p>{creatorProfileData?.followers}</p>
+            <span>{creatorProfileData && "Subscribers"}</span>
           </div>
           <div className={css.item}>
-            {isLoading ? <p></p> : data?.rating ? data?.rating : "0.0"}
-            <span>{data && "Rating"}</span>
+            {isLoading ? <p></p> : creatorProfileData?.rating ? creatorProfileData?.rating : "0.0"}
+            <span>{creatorProfileData && "Rating"}</span>
           </div>
         </div>
 
-        {/* Profile Bio  */}
+        {/* Profile Bio */}
         <div className={css.profileBio}>
-          {data?.user?.description ? (
-            <span>{data?.user?.description}</span>
+          {creatorProfileData?.user?.description ? (
+            <span>{creatorProfileData?.user?.description}</span>
           ) : (
             !isLoading && <span></span>
           )}
         </div>
 
-        {/* Buttons | Subscribe | Unsubscribe | Share Profile  */}
-        <div className={css.profileBtns}>
-          {
-            <>
-              {!isLoading && data?.isSubscribed ? (
-                <button onClick={() => setIsUnsubModal(true)}>
-                  Unsubscribe
-                </button>
-              ) : (
-                !isLoading && (
-                  <button
-                    className={css.subscribeBtn}
-                    onClick={() => navigate(`/subscription/${data?.user?.id}`)}
-                  >
-                    <p>Subscribe</p>
-                    <span>
-                      <NumericFormat
-                        displayType="text"
-                        value={data?.user?.rate}
-                        thousandSeparator=","
-                        thousandsGroupStyle="lakh"
-                      />
-                      /month
-                    </span>
-                  </button>
-                )
+        {linksList.length > 0 && (
+          <div className="flex justify-center">
+            <div className={css.copyToClipboard}>
+              {!isCopied && (
+                <p
+                  className="cursor-pointer text-blue-700 "
+                  onClick={() =>
+                    navigate(`/creators/${creatorProfileData.user.username}/${creatorProfileData.user.id}`)
+                  }
+                >
+                  Link goes here
+                </p>
               )}
 
-              {!isLoading && (
-                <button onClick={() => setIsShareProfileModal(true)}>
-                  Share Profile
-                </button>
+              {isCopied ? (
+                <>
+                  <span>vinedo.app/@{creatorProfileData?.user.username}</span>{" "}
+                  <TiTick className="text-green-600" fontSize={23} />
+                </>
+              ) : (
+                ""
               )}
-            </>
-          }
+            </div>
+          </div>
+        )}
+
+        {/* Buttons | Subscribe | Unsubscribe | Share Profile */}
+        <div className={css.profileBtns}>
+          {!isLoading && creatorProfileData?.isSubscribed ? (
+            <button onClick={() => setIsUnsubModal(true)}>Unsubscribe</button>
+          ) : (
+            !isLoading && (
+              <button
+                className={css.subscribeBtn}
+                onClick={() => navigate(`/subscription/${creatorProfileData?.user?.id}`)}
+              >
+                <p>Subscribe</p>
+                <span>
+                  <NumericFormat
+                    displayType="text"
+                    value={creatorProfileData?.user?.rate}
+                    thousandSeparator=","
+                    thousandsGroupStyle="lakh"
+                  />
+                  /month
+                </span>
+              </button>
+            )
+          )}
+
+          {!isLoading && (
+            <button onClick={() => setIsShareProfileModal(true)}>Share Profile</button>
+          )}
         </div>
 
-        {/* Tabs  */}
+        {/* Tabs */}
         <ProfileTabs
-          data={data?.user?.posts}
+          data={creatorProfileData?.user?.posts}
           isLoading={isLoading}
-          isSubscribed={data?.isSubscribed}
-          creator={data?.user}
-          imageCount={data?.imageCount}
-          videoCount={data?.videoCount}
+          isSubscribed={creatorProfileData?.isSubscribed}
+          creator={creatorProfileData?.user}
+          imageCount={creatorProfileData?.imageCount}
+          videoCount={creatorProfileData?.videoCount}
         />
 
-        {/* Burger Menu Modal  */}
+        {/* Burger Menu Modal */}
         <BurgerMenuModal
           isBurgerMenu={isBurgerMenu}
           setIsBurgerMenu={setIsBurgerMenu}
@@ -135,30 +170,30 @@ const CreatorProfile = () => {
           setIsDeleteModal={setIsDeleteModal}
         />
 
-        {/* Account Delete Confirmation Modal  */}
+        {/* Account Delete Confirmation Modal */}
         <DeleteAccountModal
           isDeleteModal={isDeleteModal}
           setIsDeleteModal={setIsDeleteModal}
         />
 
-        {/* Share Profile Modal  */}
+        {/* Share Profile Modal */}
         <ShareProfileModal
           isShareProfileModal={isShareProfileModal}
           setIsShareProfileModal={setIsShareProfileModal}
-          username={data?.user?.username}
+          username={creatorProfileData?.user?.username}
         />
 
-        {/* Logout Modal  */}
+        {/* Logout Modal */}
         <LogoutModal
           isLogoutModal={isLogoutModal}
           setIsLogoutModal={setIsLogoutModal}
         />
 
-        {/* Unsubscribe Confirmation Modal  */}
+        {/* Unsubscribe Confirmation Modal */}
         <UnsubscribeModal
           isConfirmModal={isUnsubModal}
           setIsConfirmModal={setIsUnsubModal}
-          creatorId={data?.user?.id}
+          creatorId={creatorProfileData?.user?.id}
         />
       </div>
     </div>

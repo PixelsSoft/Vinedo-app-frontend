@@ -15,9 +15,13 @@ import DeleteAccountModal from "../Modals/DeleteAccountModal/DeleteAccountModal"
 import TermsServicesModal from "../Modals/TermsServicesModal/TermsServicesModal";
 import PrivacyServicesModal from "../Modals/PrivacyServicesModal/PrivacyServicesModal";
 import AdultModal from "../../Adult/Modals/LogoutModal/AdultModal";
+import { IoCopyOutline } from "react-icons/io5";
+import { TiTick } from "react-icons/ti";
 
 const UserProfile = () => {
   const navigate = useNavigate();
+  const [isCopied, setIsCopied] = useState(false);
+
   const [isBurgerMenu, setIsBurgerMenu] = useState(false);
   const [isLogoutModal, setIsLogoutModal] = useState(false);
   const [isShareProfileModal, setIsShareProfileModal] = useState(false);
@@ -25,7 +29,6 @@ const UserProfile = () => {
   const [isTermsModal, setIsTermsModal] = useState(false);
   const [isPrivacyModal, setIsPrivacyModal] = useState(false);
   const [isAdultModal, setIsAdultModal] = useState(false);
-
 
   const {
     data,
@@ -36,17 +39,27 @@ const UserProfile = () => {
   });
 
   useEffect(() => {
-   async ()=>{
-
-     await localStorage.setItem("data", data);
-     console.log("in profile screen",data)
-    }
-  }, [])
+    async () => {
+       localStorage.setItem("data", data);
+      console.log("in profile screen", data);
+    };
+  }, []);
   const { data: postsData, isLoading: isLoadingPosts } =
     useGetAllPostsByUserQuery();
   // console.log(data)
+  const profileLink = `vinedo.app/@${data?.user.username}`;
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(profileLink);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 3000);
+    } catch (error) {
+      console.error("Failed to copy:", error);
+    }
+  };
   return (
-    <div className="w-full min-h-screen bg-[#110e0f] md:max-w-sm overflow-x-hidden scrollbar-hide flex items-center flex-col md:mx-auto ">
+    <div className="w-full h-full bg-[#110e0f] md:max-w-sm overflow-x-hidden scrollbar-hide flex items-center flex-col md:mx-auto ">
       <div className={css.container}>
         {/* Cover photo  */}
         <CoverPhoto
@@ -86,6 +99,25 @@ const UserProfile = () => {
                 <span>Add profile bio</span>
               </div>
             )
+          )}
+        </div>
+        <div className={css.copyToClipboard}>
+          {!isCopied && (
+            <p
+              className="cursor-pointer text-blue-700 "
+              onClick={() => navigate("/profile/links")}
+            >
+              Link goes here
+            </p>
+          )}
+
+          {isCopied ? (
+            <>
+              <span>vinedo.app/@{data?.user.username}</span>{" "}
+              <TiTick className="text-green-600" fontSize={23} />
+            </>
+          ) : (
+            ""
           )}
         </div>
 
@@ -146,8 +178,8 @@ const UserProfile = () => {
           isPrivacyModal={isPrivacyModal}
           setIsPrivacyModal={setIsPrivacyModal}
         />
-         {/* Adult Modal  */}
-         <AdultModal
+        {/* Adult Modal  */}
+        <AdultModal
           isAdultModal={isAdultModal}
           setAdultModal={setIsAdultModal}
         />

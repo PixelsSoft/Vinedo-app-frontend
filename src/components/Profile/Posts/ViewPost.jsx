@@ -244,7 +244,15 @@ const ViewPost = () => {
             transition={{
               duration: 0.22,
             }}
-            style={{ height: "100%", width: "100%", position: "relative" }}
+            style={{
+              height: "100%",
+              width: "100%",
+              // position: "relative",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              
+            }}
             onClick={toggleActionsVisibility}
           >
             <div className={css.postImage}>
@@ -271,18 +279,13 @@ const ViewPost = () => {
           </motion.div>
         </AnimatePresence>
 
-
-
         {!isLoading && data && areActionsVisible && (
-        
           <BottomPostActions
             data={data}
             postId={postId}
             setIsRatingModal={setIsRatingModal}
           />
-
-        )}      
-  
+        )}
 
         <RatingModal
           isRatingModal={isRatingModal}
@@ -294,4 +297,3 @@ const ViewPost = () => {
 };
 
 export default ViewPost;
-

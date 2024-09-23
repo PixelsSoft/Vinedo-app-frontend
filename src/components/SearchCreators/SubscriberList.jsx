@@ -144,12 +144,13 @@ const SubscriberList = ({ searchText, data }) => {
           display: "flex",
           overflowX: "auto",
           whiteSpace: "nowrap",
-          justifyContent:"center",
+          justifyContent: "center",
           padding: 8,
           WebkitOverflowScrolling: "touch", // Enables momentum scrolling on iOS
           scrollbarWidth: "none", // Hides scrollbar for Firefox
           msOverflowStyle: "none", // Hides scrollbar for IE and Edge
           width: "100%", // Ensure the container has a width
+          gap:"10px"
         }}
         className="hide-scrollbar"
       >
@@ -168,7 +169,7 @@ const SubscriberList = ({ searchText, data }) => {
               flexDirection: "column",
               alignItems: "center",
               textAlign: "center",
-              marginRight: 20,
+
               cursor: "pointer",
             }}
             onClick={() => handleNavigate(item)}

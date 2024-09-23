@@ -1,4 +1,7 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {
+  createApi,
+  fetchBaseQuery
+} from "@reduxjs/toolkit/query/react";
 
 export const profileApi = createApi({
   reducerPath: "profileApi",
@@ -17,6 +20,10 @@ export const profileApi = createApi({
     getProfileDetails: builder.query({
       query: () => `user/profile`,
       providesTags: ["ProfileUser", "Post"],
+    }),
+    getLinks: builder.query({
+      query: (id) => `user/links/${id}`,  // Accepts id and appends it to the URL
+      providesTags: ["ProfileUser"],
     }),
 
     uploadCoverPhoto: builder.mutation({
@@ -82,17 +89,37 @@ export const profileApi = createApi({
       }),
       invalidatesTags: ["ProfileUser"],
     }),
+    addLink: builder.mutation({
+      query: (data) => ({
+        url: "user/links",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["ProfileUser"],
+    }),
+    deleteLink: builder.mutation({
+      query: (id) => ({
+        url: `user/links/${id}`,  // Assuming your endpoint to delete a blog looks like this
+        method: "DELETE",
+      }),
+      invalidatesTags: ["links"], // You can invalidate relevant tags here, e.g., to refetch the blog list
+    }),
   }),
 });
 
 export const {
- useGetProfileDetailsQuery,
- useUploadCoverPhotoMutation,
- useUploadProfilePhotoMutation,
- useStoreUserBioMutation,
- useDeleteAccountMutation,
- useAddBankDetailsMutation,
- useGetBankDetailsQuery,
- useGetWithdrawDetailsQuery,
- useWithdrawBalanceMutation
+  useGetProfileDetailsQuery,
+  useGetLinksQuery,
+  useUploadCoverPhotoMutation,
+  useUploadProfilePhotoMutation,
+  useStoreUserBioMutation,
+  useDeleteAccountMutation,
+  useAddBankDetailsMutation,
+  useGetBankDetailsQuery,
+  useGetWithdrawDetailsQuery,
+  useWithdrawBalanceMutation,
+  useAddLinkMutation,
+  useDeleteLinkMutation
+  
+
 } = profileApi;

@@ -26,6 +26,7 @@ import StripePaymentFormPage from "../pages/StripePaymentFormPage";
 import NotFound from "../components/NotFound/NotFound";
 import AddBankDetailsPage from "../pages/AddBankDetailsPage";
 import EditBio from "../components/EditProfile/EditFields/EditBio";
+import LinksPage from "../pages/LinksPage";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         element: <Protected Component={ProfilePage} />,
+      },
+      {
+        path: "profile/links",
+        element: <Protected Component={LinksPage} />,
       },
       {
         path: "profile/edit",
@@ -106,6 +111,10 @@ export const router = createBrowserRouter([
       {
         path: "creators/:username",
         element: <Protected Component={CreatorsProfilePage} />,
+      },
+      {
+        path: "creators/:username/:id",
+        element: <Protected Component={LinksPage} />,
       },
       {
         path: "payment/:creatorId",

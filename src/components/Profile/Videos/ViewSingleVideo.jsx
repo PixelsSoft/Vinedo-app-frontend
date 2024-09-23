@@ -233,19 +233,7 @@ const ViewSingleVideo = () => {
       onClick={toggleVisibility}
     >
       <div className={`scrollbar-hide ${css.viewPostWrap}`}>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key="postVideo"
-            variants={variants}
-            initial="initial"
-            animate="enter"
-            exit="exit"
-            transition={{
-              duration: 0.22,
-            }}
-            style={{ height: "100%", width: "100%", position: "relative" ,alignContent:"center"}}
-          >
-            {isVisible && (
+      {isVisible && (
               <div className={css.header}>
                 <div className={css.left} onClick={() => navigate(-1)}>
                   <IoIosArrowBack fontSize={28} />
@@ -284,13 +272,13 @@ const ViewSingleVideo = () => {
                 </div>
               ) : (
                 <video
-                  style={{ height: "100%",}}
+                  style={{ height: "100%",margin:"auto" ,display:"flex",justifyContent:"center",alignItems:"center"}}
                   className={css.video}
                   controls
                   autoPlay
                   loop
                   width={"100%"}
-                  height={"auto"}
+                  height={"100%"}
                   controlsList="nodownload"
                   onContextMenu={(e) => e.preventDefault()}
                 >
@@ -313,8 +301,6 @@ const ViewSingleVideo = () => {
                 postId={postId}
               />
             )}
-          </motion.div>
-        </AnimatePresence>
 
         {isVisible && (
           <RatingModal

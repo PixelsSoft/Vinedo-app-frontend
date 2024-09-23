@@ -11,7 +11,8 @@ const Posts = ({ posts }) => {
   const navigate = useNavigate();
 
   return (
-    <div className={css.posts}>
+  <div>
+      <div className={css.posts}>
       {posts?.slice().reverse().map(
         (item) =>
           item?.type === 0 && (
@@ -42,7 +43,12 @@ const Posts = ({ posts }) => {
             </div>
           )
       )}
+     
     </div>
+    <div className="bg-transparent h-[100px]">
+
+</div>
+  </div>
   );
 };
 
