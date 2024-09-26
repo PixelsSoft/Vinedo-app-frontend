@@ -19,7 +19,13 @@ const BottomPostActions = ({ data, setIsRatingModal, postId }) => {
   };
 
   return (
-    <div className={css.bottomActionsWrap}>
+    
+
+
+    <div 
+    
+    className={css.bottomActionsWrap}
+    >
       <div className={css.line}></div>
       <div className={css.items}>
         <div className="flex-1 -mt-1.5">
@@ -30,7 +36,7 @@ const BottomPostActions = ({ data, setIsRatingModal, postId }) => {
               likes={likes}
               setLikes={setLikes}
               error={error}
-            />
+              />
             <span className="-mt-2.5 animate-none transform-none">{likes}</span>
           </div>
         </div>
@@ -47,22 +53,22 @@ const BottomPostActions = ({ data, setIsRatingModal, postId }) => {
             disabled={data?.isRated}
             className={css.item}
             onClick={() => setIsRatingModal(true)}
-          >
+            >
             {/* {data?.isRated  ?
            <label
-          //  htmlFor="toggle-heart"
+           //  htmlFor="toggle-heart"
            style={{ color: "#FFFF00" }}
-         >
+           >
            <FaStar />
-         </label>
-         :
-         <label
-        //  htmlFor="toggle-heart"
-         style={{ color: "#ffffff" }}
-       >
-         <FaRegStar />
-       </label>
-        } */}
+           </label>
+           :
+           <label
+           //  htmlFor="toggle-heart"
+           style={{ color: "#ffffff" }}
+           >
+           <FaRegStar />
+           </label>
+          } */}
             <img src={data?.isRated ? starFilled : star} alt="" />
             <span>
               {data?.rating ? parseFloat(data.rating).toFixed(1) : "0.0"}
@@ -71,6 +77,7 @@ const BottomPostActions = ({ data, setIsRatingModal, postId }) => {
         </div>
       </div>
     </div>
+  
   );
 };
 

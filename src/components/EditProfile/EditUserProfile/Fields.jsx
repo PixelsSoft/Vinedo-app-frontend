@@ -86,8 +86,10 @@ const Fields = ({ data, isLoading }) => {
         }
       >
         <p>Edit Bio</p>
-        <div className={css.right}>
-          <p>{data?.user?.description}</p>
+        <div
+         className={css.right}
+        >
+          <p> `${data?.user?.description.substring(0, 30)}...`</p> 
           <IoChevronForward />
         </div>
       </div>

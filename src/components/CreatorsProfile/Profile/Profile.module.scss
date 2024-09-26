@@ -247,10 +247,19 @@
 .e-tab .e-tab-header.e-vertical .e-indicator {
   transition: none;
 }
+.linkbutton{
+
+align-content: center;
+
+text-align: center;
+justify-content: center;
+
+}
 
 
 .copyToClipboard{
   width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -259,9 +268,9 @@
   line-height: 14px;
   color: #A1A3A7;
   gap: 9px;
-  margin: 10px 0;
-  padding-right: 5px;
-
+  margin: 10px 10px;
+  padding: 10px 10px;
+ 
   svg{
       font-size: 17px;
       color: #A1A3A7;

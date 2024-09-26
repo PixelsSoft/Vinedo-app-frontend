@@ -22,6 +22,8 @@ const UserProfile = () => {
   const navigate = useNavigate();
   const [isCopied, setIsCopied] = useState(false);
 
+
+
   const [isBurgerMenu, setIsBurgerMenu] = useState(false);
   const [isLogoutModal, setIsLogoutModal] = useState(false);
   const [isShareProfileModal, setIsShareProfileModal] = useState(false);
@@ -107,7 +109,7 @@ const UserProfile = () => {
               className="cursor-pointer text-blue-700 "
               onClick={() => navigate("/profile/links")}
             >
-              Link goes here
+           Add Links
             </p>
           )}
 

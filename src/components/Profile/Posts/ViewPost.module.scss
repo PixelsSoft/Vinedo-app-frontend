@@ -2,7 +2,7 @@
 
 .viewPostWrap {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   position: relative;
   background: #000000;
@@ -81,15 +81,19 @@
   .postImage {
     width: 100%;
     height: 100%;
+    
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    position: absolute;
+    margin-bottom: 50px;
 
 
     img {
       display: block;
       width: 100%;
+      position: absolute;
+      
     }
 
     .postNumbers {
@@ -112,7 +116,9 @@
   .bottomActionsWrap {
     // position: fixed;
     background-color: rgba(0, 0, 0, 0.900);
-    width: 100%;
+    // width: 100%;
+  // width: 100vw;
+
     position: fixed !important;
     bottom: 50px;
     // top: 90%;
@@ -122,11 +128,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 100%;
+    // width: 100%;
+    // max-width: 100%;
     margin: auto;
     gap: 0.3rem;
-    max-width: 100%;
+
+    max-width: 24rem;
     z-index: 99;
     // margin-bottom: 18vh;
 

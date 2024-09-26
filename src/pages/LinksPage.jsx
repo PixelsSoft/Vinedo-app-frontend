@@ -85,19 +85,23 @@ const LinksPage = () => {
   return (
     <div>
       <TopBackNavigation onBack={() => navigate(-1)} heading="Links" />
-      {!showInputs && userPage && (
-        <div
-          className="flex mx-auto justify-start ml-4 items-center space-x-2 cursor-pointer"
-          onClick={() => setShowInputs(true)}
-        >
-          <div>
-            <PiPlusCircleThin className="text-[30px]" />
-          </div>
+      {linksList.length<4 &&
 
-          <span>Add link</span>
-        </div>
-      )}
-    
+!showInputs && userPage && (
+  <div
+    className="flex mx-auto justify-start ml-4 items-center space-x-2 cursor-pointer"
+    onClick={() => setShowInputs(true)}
+  >
+    <div>
+      <PiPlusCircleThin className="text-[30px]" />
+    </div>
+
+    <span>Add link</span>
+  </div>
+)
+
+
+      }
       {showInputs && (
         <div className="flex flex-col space-y-2 my-4 p-2">
           <div className={css.inputContainer} style={{ borderRadius: "10px" }}>

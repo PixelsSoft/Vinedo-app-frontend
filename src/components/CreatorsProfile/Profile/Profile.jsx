@@ -15,6 +15,7 @@ import ConfirmModal from "../../CreatorsTool/ConfirmModal";
 import DeleteAccountModal from "../../Profile/Modals/DeleteAccountModal/DeleteAccountModal";
 import UnsubscribeModal from "../../Profile/Modals/UnsubscribeModal/UnsubscribeModal";
 import { useGetLinksQuery } from "../../../services/api/profileApi/profileApi";
+import { useSelector } from "react-redux";
 
 const CreatorProfile = () => {
   const navigate = useNavigate();
@@ -26,7 +27,8 @@ const CreatorProfile = () => {
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [isUnsubModal, setIsUnsubModal] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
-
+  const { user } = useSelector((store) => store.auth);
+  console.log({ user })
   // Fetch creator profile data
   const {
     data: creatorProfileData, // Renamed this to avoid conflicts
@@ -97,8 +99,43 @@ const CreatorProfile = () => {
           )}
         </div>
 
-        {linksList.length > 0 && (
-          <div className="flex justify-center">
+        <div className="flex justify-center" style={{ margin: '0 30px',alignContent:"center" }}>
+  <div className={css.copyToClipboard} > {/* Add horizontal padding here */}
+    {!isCopied && (
+      <p className="cursor-pointer text-blue-700">
+        {creatorProfileData?.user?.id === user?.id ? "Add links" :
+          linksList.length > 0 && (
+            <div style={{ display: "flex", overflowX: "auto", maxWidth: "24rem",scrollbarWidth:'none', overflowX:'scroll',marginLeft:"5px" }}> 
+              {linksList.slice(0, 4).map((item, index) => (
+                <a key={index} href={item?.url} target="_blank" rel="noopener noreferrer" style={{ marginRight: '20px' }}>
+                  <p className={css.linkbutton}>
+                  {item?.title.length > 10 
+    ? `${item?.title.substring(0, 10)}...` 
+    : item?.title}
+                  </p>
+                </a>
+              ))}
+            
+            </div>
+          )
+        }
+      </p>
+    )}
+    {isCopied ? (
+      <>
+        <span>vinedo.app/@{creatorProfileData?.user.username}</span>{" "}
+        <TiTick className="text-green-600" fontSize={23} />
+      </>
+    ) : (
+      ""
+    )}
+  </div>
+</div>
+
+
+
+
+        {/* <div className="flex justify-center">
             <div className={css.copyToClipboard}>
               {!isCopied && (
                 <p
@@ -107,7 +144,23 @@ const CreatorProfile = () => {
                     navigate(`/creators/${creatorProfileData.user.username}/${creatorProfileData.user.id}`)
                   }
                 >
-                  Link goes here
+                  {creatorProfileData?.user?.id ===user?.id ?"Add links ":
+                  
+                  linksList.length > 0 && (
+                    linksList.map((item)=>{
+                      return(
+
+  <div style={{display:"flex", flexDirection:"row"}}>
+
+    <p className={css.linkbutton}>{item?.title}</p>
+  </div>
+                      )
+
+                    })
+
+                  )}
+                  
+
                 </p>
               )}
 
@@ -120,8 +173,8 @@ const CreatorProfile = () => {
                 ""
               )}
             </div>
-          </div>
-        )}
+          </div> */}
+
 
         {/* Buttons | Subscribe | Unsubscribe | Share Profile */}
         <div className={css.profileBtns}>
