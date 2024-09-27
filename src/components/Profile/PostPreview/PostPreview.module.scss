@@ -109,8 +109,10 @@
   .imageCard {
     margin: 1rem auto;
     width: 92%;
-    height: 50vh;
-    max-height: 410px;
+    height: 70vh;
+    align-self: center;
+
+    // max-height: 410px;
     border-radius: 8px;
     @include flexCenter;
     overflow: hidden;

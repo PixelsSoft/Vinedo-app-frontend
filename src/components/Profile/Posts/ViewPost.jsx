@@ -204,7 +204,9 @@ const ViewPost = () => {
   };
 
   return (
-    <div className="w-screen h-screen bg-[#110e0f] md:max-w-sm overflow-x-hidden scrollbar-hide flex justify-center items-center flex-col md:mx-auto">
+    <div 
+    className="w-screen h-screen bg-[#110e0f] md:max-w-sm overflow-x-hidden scrollbar-hide flex justify-center items-center flex-col md:mx-auto"
+    >
       <div className={css.viewPostWrap}>
         {areActionsVisible && (
           <div className={css.header}>
@@ -279,6 +281,7 @@ const ViewPost = () => {
           </motion.div>
         </AnimatePresence>
 
+
         {!isLoading && data && areActionsVisible && (
           <BottomPostActions
             data={data}
@@ -286,6 +289,7 @@ const ViewPost = () => {
             setIsRatingModal={setIsRatingModal}
           />
         )}
+     
 
         <RatingModal
           isRatingModal={isRatingModal}

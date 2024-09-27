@@ -22,9 +22,10 @@ const BottomPostActions = ({ data, setIsRatingModal, postId }) => {
     
 
 
+
+
     <div 
-    
-    className={css.bottomActionsWrap}
+    className={[css.bottomActionsWrap,]}
     >
       <div className={css.line}></div>
       <div className={css.items}>
@@ -77,7 +78,7 @@ const BottomPostActions = ({ data, setIsRatingModal, postId }) => {
         </div>
       </div>
     </div>
-  
+
   );
 };
 

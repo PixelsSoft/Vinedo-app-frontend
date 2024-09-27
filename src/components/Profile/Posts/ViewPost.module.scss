@@ -114,10 +114,10 @@
 
   // Bottom Post Action
   .bottomActionsWrap {
-    // position: fixed;
+    position: fixed;
     background-color: rgba(0, 0, 0, 0.900);
-    // width: 100%;
-  // width: 100vw;
+
+
 
     position: fixed !important;
     bottom: 50px;
@@ -129,11 +129,12 @@
     justify-content: center;
     align-items: center;
     // width: 100%;
-    // max-width: 100%;
+   
+    width: 24rem;
     margin: auto;
     gap: 0.3rem;
 
-    max-width: 24rem;
+   
     z-index: 99;
     // margin-bottom: 18vh;
 

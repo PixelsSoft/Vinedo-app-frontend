@@ -211,6 +211,8 @@ const PostPreview = () => {
               <span>{user?.username}</span>
             </div>
           </div>
+     
+          
           {file?.type === "image" ? (
             imagePreview?.length === 1 ? (
               <motion.div
@@ -251,6 +253,7 @@ const PostPreview = () => {
               <ClipLoader color="#3632FF" size={45} speedMultiplier={0.8} />
             </div>
           )}
+ 
           {/* <motion.div
             key="previwImage"
             className={css.postCard}
