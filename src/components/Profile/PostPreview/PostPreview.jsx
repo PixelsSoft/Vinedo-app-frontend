@@ -239,6 +239,7 @@ const PostPreview = () => {
                 {/* <VideoPreview src={videoPreview} /> */}
                 {/* <TestVidStack src={videoPreview} /> */}
                 <VideoPlayer
+                
                   options={videoJsOptions}
                   onReady={handlePlayerReady}
                 />

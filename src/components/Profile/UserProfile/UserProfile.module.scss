@@ -166,15 +166,29 @@
   }
 
   .profileBio {
+    // width: 24rem;
+
     margin-top: .9rem;
     font-size: 13px;
     font-weight: 200;
     line-height: 16px;
     text-align: center;
     color: #fff;
-    max-width: 86%;
+ 
+
+    max-width: 80%;
     margin-left: auto;
     margin-right: auto;
+
+    span{
+    
+      // background-color: aquamarine;
+      text-align: center;
+  
+
+      // margin-right: 20px
+
+    }
 
     .addBio{
       font-size: 13px;

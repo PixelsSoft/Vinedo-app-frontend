@@ -54,7 +54,7 @@ export const VideoPlayer = (props) => {
       data-vjs-player
       style={{
         display: "flex",
-        // justifyContent: "center",
+        justifyContent: "center",
         alignItems: "center",
         height: "100%",
         width: "100%",

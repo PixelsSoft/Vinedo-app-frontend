@@ -86,12 +86,13 @@
 
   .videoCard {
     width: 100%;
-    width: 95%;
+display: block;
     border-radius: 8px;
     margin: auto;
-    height: 100%;
-    min-height: 220px;
-    max-height: 380px;
+    height: 65vh;
+
+text-align: center;
+
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -100,18 +101,24 @@
 
     img {
       width: 100%;
+    
       object-fit: cover;
       vertical-align: middle;
       border-radius: 8px;
+
+
     }
   }
 
   .imageCard {
-    margin: 1rem auto;
-    width: 92%;
-    height: 70vh;
+    margin:  auto;
+    width: 90%;
+    height: 65vh;
     align-self: center;
 
+ align-items: center;
+justify-content: center;
+align-content: center;
     // max-height: 410px;
     border-radius: 8px;
     @include flexCenter;
@@ -121,6 +128,7 @@
     img {
       width: 100%;
       object-fit: cover;
+
       vertical-align: middle;
       border-radius: 8px;
     }

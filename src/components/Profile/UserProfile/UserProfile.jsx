@@ -32,6 +32,11 @@ const UserProfile = () => {
   const [isPrivacyModal, setIsPrivacyModal] = useState(false);
   const [isAdultModal, setIsAdultModal] = useState(false);
 
+
+
+
+ 
+
   const {
     data,
     isFetching: isLoading,
@@ -39,6 +44,9 @@ const UserProfile = () => {
   } = useGetProfileDetailsQuery(null, {
     refetchOnMountOrArgChange: false,
   });
+
+ 
+ 
 
   useEffect(() => {
     async () => {
@@ -93,7 +101,9 @@ const UserProfile = () => {
         {/* Profile Bio  */}
         <div className={css.profileBio}>
           {data?.user?.description ? (
-            <span>{data?.user?.description}</span>
+      
+              <span >{data?.user?.description}</span>
+       
           ) : (
             !isLoading && (
               <div className={css.addBio} onClick={() => navigate("/add/bio")}>
