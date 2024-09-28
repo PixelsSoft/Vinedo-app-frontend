@@ -22,8 +22,6 @@ const UserProfile = () => {
   const navigate = useNavigate();
   const [isCopied, setIsCopied] = useState(false);
 
-
-
   const [isBurgerMenu, setIsBurgerMenu] = useState(false);
   const [isLogoutModal, setIsLogoutModal] = useState(false);
   const [isShareProfileModal, setIsShareProfileModal] = useState(false);
@@ -31,11 +29,6 @@ const UserProfile = () => {
   const [isTermsModal, setIsTermsModal] = useState(false);
   const [isPrivacyModal, setIsPrivacyModal] = useState(false);
   const [isAdultModal, setIsAdultModal] = useState(false);
-
-
-
-
- 
 
   const {
     data,
@@ -45,12 +38,9 @@ const UserProfile = () => {
     refetchOnMountOrArgChange: false,
   });
 
- 
- 
-
   useEffect(() => {
     async () => {
-       localStorage.setItem("data", data);
+      localStorage.setItem("data", data);
       console.log("in profile screen", data);
     };
   }, []);
@@ -101,9 +91,7 @@ const UserProfile = () => {
         {/* Profile Bio  */}
         <div className={css.profileBio}>
           {data?.user?.description ? (
-      
-              <span >{data?.user?.description}</span>
-       
+            <span>{data?.user?.description}</span>
           ) : (
             !isLoading && (
               <div className={css.addBio} onClick={() => navigate("/add/bio")}>
@@ -119,7 +107,7 @@ const UserProfile = () => {
               className="cursor-pointer text-blue-700 "
               onClick={() => navigate("/profile/links")}
             >
-           Add Links
+              Add Links
             </p>
           )}
 

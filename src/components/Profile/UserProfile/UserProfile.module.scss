@@ -23,7 +23,7 @@
       vertical-align: middle;
     }
 
-    .editCover{
+    .editCover {
       @include flexCenter;
       position: absolute;
       bottom: 5.5%;
@@ -174,23 +174,18 @@
     line-height: 16px;
     text-align: center;
     color: #fff;
- 
+
 
     max-width: 80%;
     margin-left: auto;
     margin-right: auto;
 
-    span{
-    
-      // background-color: aquamarine;
+    span {
+      word-wrap: break-word;
       text-align: center;
-  
-
-      // margin-right: 20px
-
     }
 
-    .addBio{
+    .addBio {
       font-size: 13px;
       font-weight: 600;
       line-height: 16px;
@@ -235,12 +230,13 @@
 
 }
 
-.e-tab .e-tab-header:not(.e-vertical) .e-indicator, .e-tab .e-tab-header.e-vertical .e-indicator {
-    transition: none;
+.e-tab .e-tab-header:not(.e-vertical) .e-indicator,
+.e-tab .e-tab-header.e-vertical .e-indicator {
+  transition: none;
 }
 
-.copyToClipboard{
- 
+.copyToClipboard {
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -252,9 +248,9 @@
   margin: 1rem auto;
   padding-right: 5px;
 
-  svg{
-      font-size: 17px;
-      color: #A1A3A7;
-      cursor: pointer;
+  svg {
+    font-size: 17px;
+    color: #A1A3A7;
+    cursor: pointer;
   }
 }
