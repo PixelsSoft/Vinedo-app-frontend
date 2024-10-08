@@ -2,17 +2,19 @@
 
 .viewPostWrap {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 125px);
   overflow: hidden;
-  position: relative;
-  background: #000000;
+  position: fixed;
+  top: 0px;
+  background: black !important;
   display: flex;
   justify-content: center;
   align-items: center;
-  // background: #110e0f;
+  max-width: 26rem;
+
 
   .header {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.9);
     width: 100%;
 
     position: absolute;
@@ -81,19 +83,18 @@
   .postImage {
     width: 100%;
     height: 100%;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    margin-bottom: 50px;
-
+    padding-bottom: 50px;
 
     img {
       display: block;
       width: 100%;
-      position: absolute;
-      
+      // position: absolute;
+
     }
 
     .postNumbers {
@@ -126,12 +127,12 @@
     justify-content: center;
     align-items: center;
     // width: 100%;
-   
+
     width: 24rem;
     margin: auto;
     gap: 0.3rem;
 
-   
+
     z-index: 99;
     // margin-bottom: 18vh;
 

@@ -6,7 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { getVideoCover } from "../../../utils/helpers/helpers";
 import { ClipLoader } from "react-spinners";
-import { setActivePostTab, setPostFile } from "../../../services/slices/posts/postSlice";
+import {
+  setActivePostTab,
+  setPostFile,
+} from "../../../services/slices/posts/postSlice";
 import { useCreatePostMutation } from "../../../services/api/postApi/postApi";
 import VideoPreview from "./VideoPreview";
 import { Button } from "@nextui-org/react";
@@ -14,20 +17,21 @@ import ImageComponent from "../../ui/Image/ImagePostsComponent";
 import VideoPlayer from "./VideoPlayer";
 import ImageProfileComponent from "../../ui/Image/ImageProfileComponent";
 import MultiplePostsSwiper from "./MultiplePostsSwiper";
+import TopBackNavigation from "../../ui/TopBackNavigation/TopBackNavigation";
 
 // Function to convert data URI to Blob
 function dataURItoBlob(dataURI) {
-    // Split the Base64 string into parts
-    let parts = dataURI.split(',');
-    let byteString = atob(parts[1]);
-    // Create a Uint8Array from the Base64 string
-    let arrayBuffer = new ArrayBuffer(byteString.length);
-    let intArray = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < byteString.length; i++) {
-        intArray[i] = byteString.charCodeAt(i);
-    }
-    // Create a Blob object from the Uint8Array
-    return new Blob([intArray], { type: parts[0].split(':')[1].split(';')[0] });
+  // Split the Base64 string into parts
+  let parts = dataURI.split(",");
+  let byteString = atob(parts[1]);
+  // Create a Uint8Array from the Base64 string
+  let arrayBuffer = new ArrayBuffer(byteString.length);
+  let intArray = new Uint8Array(arrayBuffer);
+  for (let i = 0; i < byteString.length; i++) {
+    intArray[i] = byteString.charCodeAt(i);
+  }
+  // Create a Blob object from the Uint8Array
+  return new Blob([intArray], { type: parts[0].split(":")[1].split(";")[0] });
 }
 
 const PostPreview = () => {
@@ -131,15 +135,15 @@ const PostPreview = () => {
 
   const handleSubmit = async () => {
     let formData = new FormData();
-   
-    if(file?.type === "image"){
+
+    if (file?.type === "image") {
       file.files.forEach((file, index) => {
         formData.append("post_file[]", file);
       });
-    }else{
+    } else {
       formData.append("post_file[]", file?.file);
     }
-    
+
     if (file?.type === "video") {
       formData.append("thumbnail", videoThumbnail, "thumbnail.png");
       formData.append("duration", file?.duration);
@@ -186,10 +190,7 @@ const PostPreview = () => {
 
   return (
     <div className={`${css.wrapper} postPreview`}>
-      <header>
-        <IoIosArrowBack onClick={handleBack} />
-        <p>Create Post</p>
-      </header>
+      <TopBackNavigation heading="Create Post" onBack={() => navigate(-1)} />
 
       {file && (
         <>
@@ -211,8 +212,7 @@ const PostPreview = () => {
               <span>{user?.username}</span>
             </div>
           </div>
-     
-          
+
           {file?.type === "image" ? (
             imagePreview?.length === 1 ? (
               <motion.div
@@ -239,7 +239,6 @@ const PostPreview = () => {
                 {/* <VideoPreview src={videoPreview} /> */}
                 {/* <TestVidStack src={videoPreview} /> */}
                 <VideoPlayer
-                
                   options={videoJsOptions}
                   onReady={handlePlayerReady}
                 />
@@ -254,7 +253,7 @@ const PostPreview = () => {
               <ClipLoader color="#3632FF" size={45} speedMultiplier={0.8} />
             </div>
           )}
- 
+
           {/* <motion.div
             key="previwImage"
             className={css.postCard}

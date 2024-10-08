@@ -204,9 +204,7 @@ const ViewPost = () => {
   };
 
   return (
-    <div 
-    className="w-screen h-screen bg-[#110e0f] md:max-w-sm overflow-x-hidden scrollbar-hide flex justify-center items-center flex-col md:mx-auto"
-    >
+    <div className="w-screen h-screen bg-black md:max-w-sm overflow-x-hidden scrollbar-hide flex justify-center items-center flex-col md:mx-auto">
       <div className={css.viewPostWrap}>
         {areActionsVisible && (
           <div className={css.header}>
@@ -246,20 +244,11 @@ const ViewPost = () => {
             transition={{
               duration: 0.22,
             }}
-            style={{
-              height: "100%",
-              width: "100%",
-              // position: "relative",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              
-            }}
             onClick={toggleActionsVisibility}
           >
             <div className={css.postImage}>
               {isLoading ? (
-                <div className="h-full w-full -mt-6 flex items-center justify-center">
+                <div>
                   <ClipLoader color="#3632FF" size={43} speedMultiplier={0.9} />
                 </div>
               ) : data.post.images.length > 1 ? (
@@ -268,19 +257,23 @@ const ViewPost = () => {
                   isLoading={isLoading}
                 />
               ) : (
-                <ImagePostViewComponent
-                  src={
-                    import.meta.env.VITE_IMAGE_POST_URI +
-                    data?.post?.images[0].filename
-                  }
-                  radius={0}
-                  isLoading={isLoading}
-                />
+                ""
               )}
             </div>
           </motion.div>
         </AnimatePresence>
-
+        {!isLoading && data && (
+          <div className="flex justify-center items-center w-full">
+            <img
+              src={
+                import.meta.env.VITE_IMAGE_POST_URI +
+                data?.post?.images[0].filename
+              }
+              alt=""
+              className="w-full"
+            />
+          </div>
+        )}
 
         {!isLoading && data && areActionsVisible && (
           <BottomPostActions
@@ -289,7 +282,6 @@ const ViewPost = () => {
             setIsRatingModal={setIsRatingModal}
           />
         )}
-     
 
         <RatingModal
           isRatingModal={isRatingModal}

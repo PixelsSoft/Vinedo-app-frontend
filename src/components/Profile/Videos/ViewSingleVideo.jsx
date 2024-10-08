@@ -267,18 +267,18 @@ const ViewSingleVideo = () => {
               onContextMenu={(e) => e.preventDefault()}
             >
               {isLoading ? (
-                <div className="w-full h-full flex items-center justify-center">
+                <div className="w-full h-[80%] flex items-center justify-center">
                   <ClipLoader color="#3632FF" size={43} speedMultiplier={0.9} />
                 </div>
               ) : (
                 <video
-                  style={{ height: "100%",margin:"auto" ,display:"flex",justifyContent:"center",alignItems:"center"}}
-                  className={css.video}
+                  style={{ height: "80%",margin:"auto" ,display:"flex",justifyContent:"center",alignItems:"center"}}
+                 
                   controls
                   autoPlay
                   loop
                   width={"100%"}
-                  height={"100%"}
+                  height={"80%"}
                   controlsList="nodownload"
                   onContextMenu={(e) => e.preventDefault()}
                 >

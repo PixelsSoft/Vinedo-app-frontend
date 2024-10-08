@@ -2,16 +2,18 @@
 
 .viewPostWrap {
   width: 100%;
-  height: 100vh;
-  overflow-x: hidden;
-  background: #000000;
+  height: calc(100vh - 50px);
+  overflow: hidden;
+  position: fixed;
+  top: 0px;
+  background: black !important;
   display: flex;
   justify-content: center;
   align-items: center;
-  scrollbar-width: 0;
+  max-width: 26rem;
 
   .header {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.9);
     width: 100%;
     position: absolute;
     top: 0;
@@ -77,11 +79,12 @@
   }
 
   .postImage {
-    margin: auto;
     display: flex;
     justify-content: center; // Center horizontally
     align-items: center; // Center vertically
     width: 100%;
+    margin-bottom: 80px;
+    background-color: yellow;
     // Take up the full height of the container
 
     video {

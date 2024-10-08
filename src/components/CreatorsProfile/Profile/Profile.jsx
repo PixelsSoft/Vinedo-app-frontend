@@ -28,7 +28,7 @@ const CreatorProfile = () => {
   const [isUnsubModal, setIsUnsubModal] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   const { user } = useSelector((store) => store.auth);
-  console.log({ user })
+  console.log({ user });
   // Fetch creator profile data
   const {
     data: creatorProfileData, // Renamed this to avoid conflicts
@@ -50,11 +50,11 @@ const CreatorProfile = () => {
     }
   }, [linksData]);
 
-  console.log('Creator Profile:', creatorProfileData);
-  console.log('Links List:', linksList);
+  console.log("Creator Profile:", creatorProfileData);
+  console.log("Links List:", linksList);
 
   return (
-    <div className="w-full bg-[#110e0f] min-h-screen md:max-w-sm overflow-x-hidden scrollbar-hide flex items-center flex-col md:mx-auto">
+    <div className="w-full bg-black min-h-screen md:max-w-sm overflow-x-hidden scrollbar-hide flex items-center flex-col md:mx-auto">
       <div className={css.container}>
         {/* Cover photo */}
         <CoverPhoto
@@ -85,7 +85,13 @@ const CreatorProfile = () => {
             <span>{creatorProfileData && "Subscribers"}</span>
           </div>
           <div className={css.item}>
-            {isLoading ? <p></p> : creatorProfileData?.rating ? creatorProfileData?.rating : "0.0"}
+            {isLoading ? (
+              <p></p>
+            ) : creatorProfileData?.rating ? (
+              creatorProfileData?.rating
+            ) : (
+              "0.0"
+            )}
             <span>{creatorProfileData && "Rating"}</span>
           </div>
         </div>
@@ -99,41 +105,59 @@ const CreatorProfile = () => {
           )}
         </div>
 
-        <div className="flex justify-center" style={{ margin: '0 30px',alignContent:"center" }}>
-  <div className={css.copyToClipboard} > {/* Add horizontal padding here */}
-    {!isCopied && (
-      <p className="cursor-pointer text-blue-700">
-        {creatorProfileData?.user?.id === user?.id ? "Add links" :
-          linksList.length > 0 && (
-            <div style={{ display: "flex", overflowX: "auto", maxWidth: "24rem",scrollbarWidth:'none', overflowX:'scroll',marginLeft:"5px" }}> 
-              {linksList.slice(0, 4).map((item, index) => (
-                <a key={index} href={item?.url} target="_blank" rel="noopener noreferrer" style={{ marginRight: '20px' }}>
-                  <p className={css.linkbutton}>
-                  {item?.title.length > 10 
-    ? `${item?.title.substring(0, 10)}...` 
-    : item?.title}
-                  </p>
-                </a>
-              ))}
-            
-            </div>
-          )
-        }
-      </p>
-    )}
-    {isCopied ? (
-      <>
-        <span>vinedo.app/@{creatorProfileData?.user.username}</span>{" "}
-        <TiTick className="text-green-600" fontSize={23} />
-      </>
-    ) : (
-      ""
-    )}
-  </div>
-</div>
-
-
-
+        <div
+          className="flex justify-center"
+          style={{ margin: "0 30px", alignContent: "center" }}
+        >
+          <div className={css.copyToClipboard}>
+            {" "}
+            {/* Add horizontal padding here */}
+            {!isCopied && (
+              <p className="cursor-pointer text-blue-700">
+                {creatorProfileData?.user?.id === user?.id
+                  ? "Add links"
+                  : linksList.length > 0 && (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent:"center",
+                          alignItems:"center",
+                          gap:"10px",
+                          overflowX: "auto",
+                          maxWidth: "24rem",
+                          scrollbarWidth: "none",
+                          overflowX: "scroll",
+                        }}
+                      >
+                        {linksList.slice(0, 4).map((item, index) => (
+                          <a
+                            key={index}
+                            href={item?.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{textAlign:"center", display:"flex",justifyContent:"center",alignItems:"center",gap:"10px"}}
+                          >
+                            <p className={css.linkbutton}>
+                              {item?.title.length > 10
+                                ? `${item?.title.substring(0, 10)}...`
+                                : item?.title}
+                            </p>
+                          </a>
+                        ))}
+                      </div>
+                    )}
+              </p>
+            )}
+            {isCopied ? (
+              <>
+                <span>vinedo.app/@{creatorProfileData?.user.username}</span>{" "}
+                <TiTick className="text-green-600" fontSize={23} />
+              </>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
 
         {/* <div className="flex justify-center">
             <div className={css.copyToClipboard}>
@@ -175,7 +199,6 @@ const CreatorProfile = () => {
             </div>
           </div> */}
 
-
         {/* Buttons | Subscribe | Unsubscribe | Share Profile */}
         <div className={css.profileBtns}>
           {!isLoading && creatorProfileData?.isSubscribed ? (
@@ -184,7 +207,9 @@ const CreatorProfile = () => {
             !isLoading && (
               <button
                 className={css.subscribeBtn}
-                onClick={() => navigate(`/subscription/${creatorProfileData?.user?.id}`)}
+                onClick={() =>
+                  navigate(`/subscription/${creatorProfileData?.user?.id}`)
+                }
               >
                 <p>Subscribe</p>
                 <span>
@@ -201,7 +226,9 @@ const CreatorProfile = () => {
           )}
 
           {!isLoading && (
-            <button onClick={() => setIsShareProfileModal(true)}>Share Profile</button>
+            <button onClick={() => setIsShareProfileModal(true)}>
+              Share Profile
+            </button>
           )}
         </div>
 

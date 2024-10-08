@@ -176,6 +176,11 @@
     margin-left: auto;
     margin-right: auto;
 
+    span {
+      word-wrap: break-word;
+      text-align: center;
+    }
+
     .addBio {
       font-size: 13px;
       font-weight: 600;
@@ -247,17 +252,18 @@
 .e-tab .e-tab-header.e-vertical .e-indicator {
   transition: none;
 }
-.linkbutton{
 
-align-content: center;
-
-text-align: center;
-justify-content: center;
+.linkbutton {
+  display: flex !important;
+  align-content: center !important;
+margin: auto;
+  text-align: center !important;
+  justify-content: center !important;
 
 }
 
 
-.copyToClipboard{
+.copyToClipboard {
   width: 100%;
 
   display: flex;
@@ -270,10 +276,10 @@ justify-content: center;
   gap: 9px;
   margin: 10px 10px;
   padding: 10px 10px;
- 
-  svg{
-      font-size: 17px;
-      color: #A1A3A7;
-      cursor: pointer;
+
+  svg {
+    font-size: 17px;
+    color: #A1A3A7;
+    cursor: pointer;
   }
 }
